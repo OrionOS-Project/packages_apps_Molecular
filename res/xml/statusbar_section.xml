@@ -23,7 +23,7 @@
         android:title="@string/status_bar_gestures_category">
 
         <!-- Status bar brightness control -->
-        <org.evolution.settings.preferences.SystemSettingSwitchPreference
+        <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="status_bar_brightness_control"
             android:title="@string/status_bar_brightness_control_title"
             android:summary="@string/status_bar_brightness_control_summary"
@@ -41,15 +41,22 @@
                 <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
 
+        <!-- Bluetooth battery status -->
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="bluetooth_show_battery"
+            android:title="@string/status_bar_bluetooth_battery_title"
+            android:summary="@string/status_bar_bluetooth_battery_summary"
+            android:defaultValue="true" />
+
         <!-- Colored icons -->
-        <org.evolution.settings.preferences.SystemSettingSwitchPreference
+        <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="statusbar_colored_icons"
             android:title="@string/status_bar_colored_icons_title"
             android:summary="@string/status_bar_colored_icons_summary"
             android:defaultValue="false" />
 
         <!-- Notification counter -->
-        <org.evolution.settings.preferences.SystemSettingSwitchPreference
+        <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="statusbar_notif_count"
             android:title="@string/status_bar_notif_count_title"
             android:summary="@string/status_bar_notif_count_summary"
@@ -61,21 +68,21 @@
         android:title="@string/status_bar_privacy_indicators_category">
 
         <!-- Mic/Camera privacy indicator -->
-        <org.evolution.settings.preferences.SecureSettingSwitchPreference
+        <com.orion.support.preferences.SecureSettingSwitchPreference
             android:key="enable_camera_privacy_indicator"
             android:title="@string/status_bar_mic_camera_privacy_indicator_title"
             android:summary="@string/status_bar_mic_camera_privacy_indicator_summary"
             android:defaultValue="true" />
 
         <!-- Location privacy indicator -->
-        <org.evolution.settings.preferences.SecureSettingSwitchPreference
+        <com.orion.support.preferences.SecureSettingSwitchPreference
             android:key="enable_location_privacy_indicator"
             android:title="@string/status_bar_location_privacy_indicator_title"
             android:summary="@string/status_bar_location_privacy_indicator_summary"
             android:defaultValue="true" />
 
         <!-- Projection privacy indicator -->
-        <org.evolution.settings.preferences.SecureSettingSwitchPreference
+        <com.orion.support.preferences.SecureSettingSwitchPreference
             android:key="enable_projection_privacy_indicator"
             android:title="@string/status_bar_projection_privacy_indicator_title"
             android:summary="@string/status_bar_projection_privacy_indicator_summary"

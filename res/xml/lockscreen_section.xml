@@ -33,6 +33,12 @@
             android:title="@string/lock_screen_charging_stats_title"
             android:summary="@string/lock_screen_charging_stats_summary"
             android:defaultValue="true" />
+
+        <Preference
+            android:key="pulse_settings"
+            android:title="@string/lock_screen_pulse_settings_title"
+            android:summary="@string/lock_screen_pulse_settings_summary"
+            android:fragment="com.orion.support.fragments.lockscreen.PulseSettings" />
     </PreferenceCategory>
     <PreferenceCategory
         android:key="lock_screen_fingerprint_category"

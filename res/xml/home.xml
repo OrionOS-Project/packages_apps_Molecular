@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * SPDX-FileCopyrightText: DerpFest AOSP
+ * SPDX-FileCopyrightText: OrionOS Project
+ * SPDX-License-Identifier: Apache-2.0
+-->
+
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/molecular_title" >
+
+    <com.orion.support.preference.DarkModeCardPreference
+        android:key="dark_ui_mode"
+        android:title="@string/dark_ui_mode" />
+
+    <com.orion.support.preference.SystemThemePreference />
+
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="status_bar"
+        app:title="@string/statusbar_title"
+        app:summary="@string/statusbar_summary"
+        app:icon="@drawable/ic_statusbar_category"
+        app:fragment="com.orion.support.fragment.StatusBar"
+        app:cornerType="top" />
+
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="status_bar"
+        app:title="@string/statusbar_title"
+        app:summary="@string/statusbar_summary"
+        app:icon="@drawable/ic_statusbar_category"
+        app:cornerType="top">
+        
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="org.lineageos.lineageparts"
+            android:targetClass="org.lineageos.lineageparts.statusbar.StatusBarSettings" />
+    </com.orion.ui.preference.OrionCardPreference>
+
+
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="buttons"
+        app:title="@string/buttons_title"
+        app:summary="@string/buttons_summary"
+        app:icon="@drawable/ic_buttons_category"
+        app:cornerType="none">
+        
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="org.lineageos.lineageparts"
+            android:targetClass="org.lineageos.lineageparts.input.ButtonSettings" />
+    </com.orion.ui.preference.OrionCardPreference>
+
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="lockscreen"
+        app:title="@string/lockscreen_title"
+        app:summary="@string/lockscreen_summary"
+        app:icon="@drawable/ic_lockscreen_category"
+        app:fragment="com.orion.support.fragment.Lockscreen"
+        app:cornerType="none" />
+
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="misc"
+        app:title="@string/misc_title"
+        app:summary="@string/misc_summary"
+        app:icon="@drawable/ic_misc_category"
+        app:fragment="com.orion.support.fragment.Misc"
+        app:cornerType="bottom" />
+
+</PreferenceScreen>

@@ -91,11 +91,18 @@
         android:key="themes_animations_category"
         android:title="@string/themes_animations_category">
 
+        <!-- Charging animation -->
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="charging_animation"
+            android:title="@string/themes_charging_animation_title"
+            android:summary="@string/themes_charging_animation_summary"
+            android:defaultValue="true" />
+
         <!-- Udfps animation -->
         <Preference
             android:key="udfps_animation"
             android:title="@string/themes_udfps_animation_title"
             android:summary="@string/themes_udfps_animation_summary"
-            android:fragment="com.orio.support.fragments.themes.UdfpsAnimations" />
+            android:fragment="com.orion.support.fragments.themes.UdfpsAnimations" />
     </PreferenceCategory>
 </PreferenceScreen>

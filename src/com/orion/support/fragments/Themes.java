@@ -38,7 +38,14 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.orion.support.utils.DeviceUtils;
+
 public class Themes extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+
+    private static final String KEY_ICONS_CATEGORY = "themes_icons_category";
+    private static final String KEY_SIGNAL_ICON = "android.theme.customization.signal_icon";
+    private PreferenceCategory mIconsCategory;
+    private Preference mSignalIcon;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -48,6 +55,11 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
         addPreferencesFromResource(R.xml.themes_section);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        mIconsCategory = (PreferenceCategory) findPreference(KEY_ICONS_CATEGORY);
+        mSignalIcon = (Preference) findPreference(KEY_SIGNAL_ICON);
+        if (!DeviceUtils.deviceSupportsMobileData(context)) {
+            mIconsCategory.removePreference(mSignalIcon);
+        }
     }
 
     @Override
@@ -59,5 +71,16 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
     }
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider(R.xml.themes_section) {
 
-}
+            @Override
+            public List<String> getNonIndexableKeys(Context context) {
+                List<String> keys = super.getNonIndexableKeys(context);
+                final Resources resources = context.getResources();
+                if (!DeviceUtils.deviceSupportsMobileData(context)) {
+                    keys.add(KEY_SIGNAL_ICON);
+                }
+                return keys;
+            }
+};

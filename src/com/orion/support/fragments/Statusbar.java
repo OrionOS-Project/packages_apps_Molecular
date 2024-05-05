@@ -23,6 +23,8 @@ import android.content.pm.UserInfo;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.view.View;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -37,6 +39,7 @@ import android.content.res.Resources;
 
 import com.orion.support.preferences.SystemSettingSwitchPreference;
 import com.orion.support.utils.DeviceUtils;
+import lineageos.preference.LineageSystemSettingListPreference;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -44,8 +47,18 @@ import java.util.List;
 
 public class Statusbar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
+    private static final String KEY_QUICK_PULLDOWN = "qs_quick_pulldown";
+
     private static final String KEY_ICONS_CATEGORY = "status_bar_icons_category";
     private static final String KEY_BLUETOOTH_BATTERY_STATUS = "bluetooth_show_battery";
+
+    private static final int PULLDOWN_DIR_NONE = 0;
+    private static final int PULLDOWN_DIR_RIGHT = 1;
+    private static final int PULLDOWN_DIR_LEFT = 2;
+    private static final int PULLDOWN_DIR_BOTH = 3;
+
+    private LineageSystemSettingListPreference mQuickPulldown;
+
     private PreferenceCategory mIconsCategory;
     private SystemSettingSwitchPreference mBluetoothBatteryStatus;
 
@@ -57,8 +70,19 @@ public class Statusbar extends SettingsPreferenceFragment implements OnPreferenc
         addPreferencesFromResource(R.xml.statusbar_section);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
-	mIconsCategory = (PreferenceCategory) findPreference(KEY_ICONS_CATEGORY);
+        mQuickPulldown =
+                (LineageSystemSettingListPreference) findPreference(KEY_QUICK_PULLDOWN);
+        mQuickPulldown.setOnPreferenceChangeListener(this);
+        updateQuickPulldownSummary(mQuickPulldown.getIntValue(0));
+
+        mIconsCategory = (PreferenceCategory) findPreference(KEY_ICONS_CATEGORY);
         mBluetoothBatteryStatus = (SystemSettingSwitchPreference) findPreference(KEY_BLUETOOTH_BATTERY_STATUS);
+
+        if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            mQuickPulldown.setEntries(R.array.status_bar_quick_pull_down_entries_rtl);
+            mQuickPulldown.setEntryValues(R.array.status_bar_quick_pull_down_values_rtl);
+        }
+
         if (!DeviceUtils.deviceSupportsBluetooth(context)) {
             mIconsCategory.removePreference(mBluetoothBatteryStatus);
         }
@@ -66,7 +90,39 @@ public class Statusbar extends SettingsPreferenceFragment implements OnPreferenc
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        final Context context = getContext();
+        final ContentResolver resolver = context.getContentResolver();
+        if (preference == mQuickPulldown) {
+            int value = Integer.parseInt((String) newValue);
+            updateQuickPulldownSummary(value);
+            return true;
+        }
         return false;
+    }
+
+    private void updateQuickPulldownSummary(int value) {
+        String summary = "";
+        switch (value) {
+            case PULLDOWN_DIR_NONE:
+                summary = getResources().getString(
+                    R.string.status_bar_quick_pull_down_off);
+                break;
+            case PULLDOWN_DIR_RIGHT:
+            case PULLDOWN_DIR_LEFT:
+            case PULLDOWN_DIR_BOTH:
+                summary = getResources().getString(
+                    R.string.status_bar_quick_pull_down_summary,
+                    getResources().getString(
+                        value == PULLDOWN_DIR_RIGHT
+                            ? R.string.status_bar_quick_pull_down_right
+                            : value == PULLDOWN_DIR_LEFT
+                                ? R.string.status_bar_quick_pull_down_left
+                                : R.string.status_bar_quick_pull_down_both
+                    )
+                );
+                break;
+        }
+        mQuickPulldown.setSummary(summary);
     }
 
     @Override

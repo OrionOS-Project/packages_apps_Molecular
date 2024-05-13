@@ -9,6 +9,7 @@ package com.orion.support.fragments.miscellaneous;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
@@ -55,6 +56,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
         if (DeviceUtils.isCurrentlySupportedPixel()) {
             mSystemWideCategory.removePreference(mPixelProps);
         }
+
     }
 
     @Override
@@ -80,6 +82,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
                 if (DeviceUtils.isCurrentlySupportedPixel()) {
                     keys.add(KEY_PIXEL_PROPS);
                 }
+
                 return keys;
             }
         };

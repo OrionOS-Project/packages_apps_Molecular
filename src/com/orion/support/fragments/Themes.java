@@ -47,11 +47,13 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
 
     private static final String KEY_ICONS_CATEGORY = "themes_icons_category";
     private static final String KEY_SIGNAL_ICON = "android.theme.customization.signal_icon";
+    private static final String KEY_UDFPS_ICON = "udfps_icon";
     private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
 
     private PreferenceCategory mIconsCategory;
     private Preference mSignalIcon;
+    private Preference mUdfpsIcon;
     private PreferenceCategory mAnimationsCategory;
     private Preference mUdfpsAnimation;
 
@@ -66,6 +68,7 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
 
         mIconsCategory = (PreferenceCategory) findPreference(KEY_ICONS_CATEGORY);
         mSignalIcon = (Preference) findPreference(KEY_SIGNAL_ICON);
+        mUdfpsIcon = (Preference) findPreference(KEY_UDFPS_ICON);
         mAnimationsCategory = (PreferenceCategory) findPreference(KEY_ANIMATIONS_CATEGORY);
         mUdfpsAnimation = (Preference) findPreference(KEY_UDFPS_ANIMATION);
 
@@ -76,8 +79,12 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
         FingerprintManager fingerprintManager = (FingerprintManager)
                 getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
         if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+            mIconsCategory.removePreference(mUdfpsIcon);
             mAnimationsCategory.removePreference(mUdfpsAnimation);
         } else {
+            if (!Utils.isPackageInstalled(context, "com.orion.udfps.icons")) {
+                mIconsCategory.removePreference(mUdfpsIcon);
+            }
             if (!Utils.isPackageInstalled(context, "com.orion.udfps.animations")) {
                 mAnimationsCategory.removePreference(mUdfpsAnimation);
             }
@@ -105,8 +112,12 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
                 }
 
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+                    keys.add(KEY_UDFPS_ICON);
                     keys.add(KEY_UDFPS_ANIMATION);
                 } else {
+                    if (!Utils.isPackageInstalled(context, "com.orion.udfps.icons")) {
+                        keys.add(KEY_UDFPS_ICON);
+                    }
                     if (!Utils.isPackageInstalled(context, "com.orion.udfps.animations")) {
                         keys.add(KEY_UDFPS_ANIMATION);
                     }

@@ -23,6 +23,8 @@ import android.content.pm.UserInfo;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.text.TextUtils;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -39,11 +41,17 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.orion.support.preferences.SecureSettingSwitchPreference;
+
+
 public class Lockscreen extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String KEY_FINGERPRINT_CATEGORY = "lock_screen_fingerprint_category";
     private static final String KEY_RIPPLE_EFFECT = "enable_ripple_effect";
-    private PreferenceCategory mFingerprintCategory;
+    private static final String KEY_SCREEN_OFF_UDFPS = "screen_off_udfps_enabled";
+ 
+   private PreferenceCategory mFingerprintCategory;
+    private SecureSettingSwitchPreference mScreenOffUdfps;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -53,11 +61,23 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
         addPreferencesFromResource(R.xml.lockscreen_section);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mScreenOffUdfps = (SecureSettingSwitchPreference) findPreference(KEY_SCREEN_OFF_UDFPS);
         mFingerprintCategory = (PreferenceCategory) findPreference(KEY_FINGERPRINT_CATEGORY);
         FingerprintManager fingerprintManager = (FingerprintManager)
                 getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+
         if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
             prefScreen.removePreference(mFingerprintCategory);
+        } else {
+            boolean screenOffUdfpsAvailable = resources.getBoolean(
+                    com.android.internal.R.bool.config_supportScreenOffUdfps) ||
+                    !TextUtils.isEmpty(resources.getString(
+                            com.android.internal.R.string.config_dozeUdfpsLongPressSensorType));
+
+            if (!screenOffUdfpsAvailable) {
+                mFingerprintCategory.removePreference(mScreenOffUdfps);
+            }
         }
     }
 
@@ -82,6 +102,15 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
                     context.getSystemService(Context.FINGERPRINT_SERVICE);
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
                     keys.add(KEY_RIPPLE_EFFECT);
+                    keys.add(KEY_SCREEN_OFF_UDFPS);
+                } else {
+                    boolean screenOffUdfpsAvailable = resources.getBoolean(
+                        com.android.internal.R.bool.config_supportScreenOffUdfps) ||
+                        !TextUtils.isEmpty(resources.getString(
+                            com.android.internal.R.string.config_dozeUdfpsLongPressSensorType));
+                    if (!screenOffUdfpsAvailable) {
+                        keys.add(KEY_SCREEN_OFF_UDFPS);
+                    }
                 }
                 return keys;
             }

@@ -38,8 +38,9 @@ import com.android.internal.util.orion.ThemeUtils;
 import com.android.settings.R;
 import androidx.annotation.NonNull;
 
-import org.com.orion.support.preferences.SystemSettingListPreference;
+import com.orion.support.preferences.SystemSettingListPreference;
 import com.orion.support.preferences.SystemSettingSwitchPreference;
+import com.orion.support.preferences.SystemSettingSeekBarPreference;
 import com.orion.support.utils.DeviceUtils;
 
 import lineageos.preference.LineageSecureSettingSwitchPreference;
@@ -65,6 +66,9 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
     private static final String KEY_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
+    private static final String KEY_TILE_ANIM_STYLE = "qs_tile_animation_style";
+    private static final String KEY_TILE_ANIM_DURATION = "qs_tile_animation_duration";
+    private static final String KEY_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
 
     private static final int BATTERY_STYLE_PORTRAIT = 0;
     private static final int BATTERY_STYLE_TEXT = 4;
@@ -79,6 +83,9 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
     private LineageSecureSettingSwitchPreference mShowAutoBrightness;
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingListPreference mBatteryPercent;
+    private SystemSettingListPreference mTileAnimationInterpolator;
+    private SystemSettingListPreference mTileAnimationStyle;
+    private SystemSettingSeekBarPreference mTileAnimationDuration;
     private SystemSettingSwitchPreference mBrightnessSliderHaptic;
     private static ThemeUtils mThemeUtils;
 
@@ -122,6 +129,15 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         } else {
             prefScreen.removePreference(mShowAutoBrightness);
         }
+
+        mTileAnimationStyle = (SystemSettingListPreference) findPreference(KEY_TILE_ANIM_STYLE);
+        mTileAnimationDuration = (SystemSettingSeekBarPreference) findPreference(KEY_TILE_ANIM_DURATION);
+        mTileAnimationInterpolator = (SystemSettingListPreference) findPreference(KEY_TILE_ANIM_INTERPOLATOR);
+        mTileAnimationStyle.setOnPreferenceChangeListener(this);
+
+        int tileAnimationStyle = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.QS_TILE_ANIMATION_STYLE, 0, UserHandle.USER_CURRENT);
+        updateTileAnimStyle(tileAnimationStyle);
 
         mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
 
@@ -168,8 +184,17 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
             updateQsPanelStyle(getActivity());
             checkQSOverlays(getActivity());
             return true;
+        } else if (preference == mTileAnimationStyle) {
+            int value = Integer.parseInt((String) newValue);
+            updateTileAnimStyle(value);
+            return true;
         }
         return false;
+    }
+
+    private void updateTileAnimStyle(int tileAnimationStyle) {
+        mTileAnimationDuration.setEnabled(tileAnimationStyle != 0);
+        mTileAnimationInterpolator.setEnabled(tileAnimationStyle != 0);
     }
 
     private static void updateQsStyle(Context context) {

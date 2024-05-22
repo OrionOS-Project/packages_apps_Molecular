@@ -49,8 +49,10 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
     private static final String KEY_FINGERPRINT_CATEGORY = "lock_screen_fingerprint_category";
     private static final String KEY_RIPPLE_EFFECT = "enable_ripple_effect";
     private static final String KEY_SCREEN_OFF_UDFPS = "screen_off_udfps_enabled";
- 
-   private PreferenceCategory mFingerprintCategory;
+    private static final String KEY_AUTHENTICATION_SUCCESS = "fp_success_vibrate";
+    private static final String KEY_AUTHENTICATION_ERROR = "fp_error_vibrate";
+
+    private PreferenceCategory mFingerprintCategory;
     private SecureSettingSwitchPreference mScreenOffUdfps;
 
     @Override
@@ -103,6 +105,8 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
                 if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
                     keys.add(KEY_RIPPLE_EFFECT);
                     keys.add(KEY_SCREEN_OFF_UDFPS);
+                    keys.add(KEY_AUTHENTICATION_SUCCESS);
+                    keys.add(KEY_AUTHENTICATION_ERROR);
                 } else {
                     boolean screenOffUdfpsAvailable = resources.getBoolean(
                         com.android.internal.R.bool.config_supportScreenOffUdfps) ||

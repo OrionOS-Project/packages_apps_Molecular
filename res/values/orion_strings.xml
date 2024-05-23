@@ -346,6 +346,16 @@
     <string name="power_menu_actions_emergency_title">Emergency</string>
     <string name="power_menu_actions_devicecontrols_title">Device controls</string>
 
+    <!-- Navigation Bar -->
+    <string name="navbar_layout_category_title">Button navbar</string>
+    <string name="navbar_layout_title">Layout</string>
+    <string name="navbar_layout_normal">Normal</string>
+    <string name="navbar_layout_compact">Compact</string>
+    <string name="navbar_layout_leftleaning">Left-leaning</string>
+    <string name="navbar_layout_rightleaning">Right-leaning</string>
+    <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
+
     <!-- General -->
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>

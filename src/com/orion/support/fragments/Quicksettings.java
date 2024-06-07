@@ -33,6 +33,8 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import androidx.preference.SwitchPreference;
 
+import com.android.internal.util.orion.ThemeUtils;
+
 import com.android.settings.R;
 import androidx.annotation.NonNull;
 
@@ -52,30 +54,31 @@ import java.util.List;
 
 public class Quicksettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
+    private static final String KEY_BATTERY_STYLE = "qs_battery_style";
+    private static final String KEY_BATTERY_PERCENT = "qs_show_battery_percent";
     private static final String KEY_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
     private static final String KEY_BRIGHTNESS_SLIDER_HAPTIC = "qs_brightness_slider_haptic";
     private static final String KEY_INTERFACE_CATEGORY = "quick_settings_interface_category";
     private static final String KEY_MISCELLANEOUS_CATEGORY = "quick_settings_miscellaneous_category";
     private static final String KEY_QS_BLUETOOTH_SHOW_DIALOG = "qs_bt_show_dialog";
+    private static final String KEY_QS_UI_STYLE  = "qs_tile_ui_style";
     private static final String KEY_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
     private static final String KEY_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
-
-    private PreferenceCategory mInterfaceCategory;
-    private PreferenceCategory mMiscellaneousCategory;
-    private ListPreference mShowBrightnessSlider;
-    private ListPreference mBrightnessSliderPosition;
-    private LineageSecureSettingSwitchPreference mShowAutoBrightness;
-    private SystemSettingSwitchPreference mBrightnessSliderHaptic;
-
-    private static final String KEY_BATTERY_STYLE = "qs_battery_style";
-    private static final String KEY_BATTERY_PERCENT = "qs_show_battery_percent";
 
     private static final int BATTERY_STYLE_PORTRAIT = 0;
     private static final int BATTERY_STYLE_TEXT = 4;
     private static final int BATTERY_STYLE_HIDDEN = 5;
 
+    private PreferenceCategory mInterfaceCategory;
+    private PreferenceCategory mMiscellaneousCategory;
+    private ListPreference mShowBrightnessSlider;
+    private ListPreference mBrightnessSliderPosition;
+    private ListPreference mQsUI;
+    private LineageSecureSettingSwitchPreference mShowAutoBrightness;
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingListPreference mBatteryPercent;
+    private SystemSettingSwitchPreference mBrightnessSliderHaptic;
+    private static ThemeUtils mThemeUtils;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -83,6 +86,7 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         final Context context = getContext();
         final Resources resources = context.getResources();
         addPreferencesFromResource(R.xml.quicksettings_section);
+        mThemeUtils = new ThemeUtils(getActivity());
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
@@ -122,6 +126,11 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         if (!DeviceUtils.deviceSupportsBluetooth(mContext)) {
             prefScreen.removePreference(mMiscellaneousCategory);
         }
+
+        mQsUI = (ListPreference) findPreference(KEY_QS_UI_STYLE);
+        mQsUI.setOnPreferenceChangeListener(this);
+
+        checkQSOverlays(context);
     }
 
     @Override
@@ -140,8 +149,54 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
             mBatteryPercent.setEnabled(
                     value != BATTERY_STYLE_TEXT && value != BATTERY_STYLE_HIDDEN);
             return true;
+        } else if (preference == mQsUI) {
+            int value = Integer.parseInt((String) newValue);
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.QS_TILE_UI_STYLE, value, UserHandle.USER_CURRENT);
+            updateQsStyle(getActivity());
+            checkQSOverlays(getActivity());
+            return true;
         }
         return false;
+    }
+
+    private static void updateQsStyle(Context context) {
+        ContentResolver resolver = context.getContentResolver();
+
+        boolean isA11Style = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_TILE_UI_STYLE , 0, UserHandle.USER_CURRENT) != 0;
+
+        String qsUIStyleCategory = "android.theme.customization.qs_ui";
+        String overlayThemeTarget  = "com.android.systemui";
+        String overlayThemePackage  = "com.android.system.qs.ui.A11";
+
+        if (mThemeUtils == null) {
+            mThemeUtils = new ThemeUtils(context);
+        }
+
+        // reset all overlays before applying
+        mThemeUtils.setOverlayEnabled(qsUIStyleCategory, overlayThemeTarget, overlayThemeTarget);
+
+        if (isA11Style) {
+            mThemeUtils.setOverlayEnabled(qsUIStyleCategory, overlayThemePackage, overlayThemeTarget);
+        }
+    }
+
+    private void checkQSOverlays(Context context) {
+        ContentResolver resolver = context.getContentResolver();
+        int isA11Style = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_TILE_UI_STYLE , 0, UserHandle.USER_CURRENT);
+
+        if (isA11Style > 0) {
+            mQsUI.setEnabled(true);
+        } else {
+            mQsUI.setEnabled(true);
+        }
+
+        // Update summaries
+        int index = mQsUI.findIndexOfValue(Integer.toString(isA11Style));
+        mQsUI.setValue(Integer.toString(isA11Style));
+        mQsUI.setSummary(mQsUI.getEntries()[index]);
     }
 
     @Override

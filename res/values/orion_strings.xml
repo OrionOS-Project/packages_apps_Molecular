@@ -75,6 +75,9 @@
     <string name="miscellaneous_ignore_window_secure_title">Ignore window secure flags</string>
     <string name="miscellaneous_ignore_window_secure_summary">Remove restrictions on screenshots and screen recordings for all applications, potentially risking privacy leaks</string>
     <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <string name="miscellaneous_unlimit_screenrecord_title">Unlimit screenrecord</string>
+    <string name="miscellaneous_unlimit_screenrecord_summary">Remove the 15GiB file size limit\nMay result in a larger than needed output file</string>
+
     <!-- Miscellaneous/Spoofing -->
     <string name="spoofing_title">Component spoofing</string>
     <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>

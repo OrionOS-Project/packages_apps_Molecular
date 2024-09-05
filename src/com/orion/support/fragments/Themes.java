@@ -42,15 +42,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.orion.support.utils.DeviceUtils;
+import com.orion.support.utils.SystemUtils;
 
 public class Themes extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
+    private static final String KEY_LOCK_SOUND = "lock_sound";
+    private static final String KEY_UNLOCK_SOUND = "unlock_sound";
     private static final String KEY_ICONS_CATEGORY = "themes_icons_category";
     private static final String KEY_SIGNAL_ICON = "android.theme.customization.signal_icon";
     private static final String KEY_UDFPS_ICON = "udfps_icon";
     private static final String KEY_ANIMATIONS_CATEGORY = "themes_animations_category";
     private static final String KEY_UDFPS_ANIMATION = "udfps_animation";
 
+    private GlobalSettingListPreference mLockSound;
+    private GlobalSettingListPreference mUnlockSound;
     private PreferenceCategory mIconsCategory;
     private Preference mSignalIcon;
     private Preference mUdfpsIcon;
@@ -66,6 +71,10 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
+        mLockSound = (GlobalSettingListPreference) findPreference(KEY_LOCK_SOUND);
+        mLockSound.setOnPreferenceChangeListener(this);
+        mUnlockSound = (GlobalSettingListPreference) findPreference(KEY_UNLOCK_SOUND);
+        mUnlockSound.setOnPreferenceChangeListener(this);
         mIconsCategory = (PreferenceCategory) findPreference(KEY_ICONS_CATEGORY);
         mSignalIcon = (Preference) findPreference(KEY_SIGNAL_ICON);
         mUdfpsIcon = (Preference) findPreference(KEY_UDFPS_ICON);
@@ -93,6 +102,12 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        final Context context = getContext();
+        final ContentResolver resolver = context.getContentResolver();
+        if (preference == mLockSound || preference == mUnlockSound) {
+            SystemUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
         return false;
     }
 

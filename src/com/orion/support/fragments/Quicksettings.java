@@ -40,6 +40,10 @@ import java.util.List;
 
 public class Quicksettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
+    private static final String KEY_MISCELLANEOUS_CATEGORY = "quick_settings_miscellaneous_category";
+    private static final String KEY_QS_BLUETOOTH_SHOW_DIALOG = "qs_bt_show_dialog";
+    private PreferenceCategory mMiscellaneousCategory;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -48,6 +52,11 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         addPreferencesFromResource(R.xml.quicksettings_section);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
+        if (!DeviceUtils.deviceSupportsBluetooth(context)) {
+            prefScreen.removePreference(mMiscellaneousCategory);
+        }
     }
 
     @Override
@@ -60,4 +69,16 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         return MetricsProto.MetricsEvent.ORION;
     }
 
-}
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider(R.xml.quicksettings_section) {
+
+            @Override
+            public List<String> getNonIndexableKeys(Context context) {
+                List<String> keys = super.getNonIndexableKeys(context);
+                final Resources resources = context.getResources();
+                if (!DeviceUtils.deviceSupportsBluetooth(context)) {
+                    keys.add(KEY_QS_BLUETOOTH_SHOW_DIALOG);
+                }
+                return keys;
+            }
+        };

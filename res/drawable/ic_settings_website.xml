@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M39.9271,55.7188 C29.6979,59.1667,18.4167,55.6146,12,46.9271 C5.59375,38.25,5.51042,26.4271,11.8125,17.6563 C18.1042,8.88542,29.3438,5.1875,39.6146,8.48958 C49.8854,11.8021,56.8542,21.3542,56.8646,32.1458 C56.7813,34.1667,56.5313,36.1771,56.125,38.1458" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M37.8646,51.1042 C36.0729,53.1354,34.1146,55.0104,32,56.6979" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M32,7 C38.7083,12.8646,42.8646,21.1146,43.5729,30 C43.7188,31.6146,43.75,33.2292,43.6563,34.8542" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M32,7 C24.6354,13.4167,20.375,22.6875,20.3125,32.4583 C20.3125,48.6563,27.5938,53.4583,31.9688,56.6979" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M10.375,19.8958 L53.75,19.8958" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M32,6.98958 L32,56.6979" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M11.0521,45.4792 L37.0417,45.4792" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M7.13542,32.4583 L56.8646,31.8542" />
+    <path
+        android:strokeColor="?android:attr/colorControlNormal"
+        android:strokeWidth="3"
+        android:pathData="M53.5729,57 L58,52.5625 L50,44.5625 L54.5521,41.6458 C54.6875,41.5729,54.7604,41.4167,54.7292,41.2604 C54.7083,41.1042,54.5833,40.9792,54.4271,40.9479 L39.1354,37.375 C39.0104,37.3438,38.875,37.3854,38.7813,37.4792 C38.6979,37.5729,38.6563,37.6979,38.6771,37.8333 L42,53.4063 C42.0313,53.5625,42.1563,53.6875,42.3125,53.7083 C42.4688,53.7396,42.625,53.6771,42.7083,53.5417 L45.5729,49 Z M53.5729,57" />
+</vector>

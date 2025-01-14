@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2025 OrionOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/molecular_title"
+    android:summary="@string/molecular_summary">
+
+        <!-- About us? -->
+        <Preference
+            android:key="about_category"
+            android:title="@string/about_title"
+            android:fragment="com.orion.support.fragments.About"
+            android:icon="@drawable/ic_settings_orion" />
+
+        <!-- Themes -->
+        <Preference
+            android:key="themes_category"
+            android:title="@string/themes_title"
+            android:fragment="com.orion.support.fragments.Themes"
+            android:icon="@drawable/ic_settings_themes" />    
+
+        <!-- Status bar -->
+        <Preference
+            android:key="statusbar_category"
+            android:title="@string/statusbar_title"
+            android:fragment="com.orion.support.fragments.Statusbar"
+            android:icon="@drawable/ic_settings_statusbar" />
+
+        <!-- Quicksettings -->
+        <Preference
+            android:key="quicksettings_category"
+            android:title="@string/quicksettings_title"
+            android:fragment="com.orion.support.fragments.Quicksettings"
+            android:icon="@drawable/ic_settings_quicksettings" />
+
+        <!-- Notifications -->
+        <Preference
+            android:key="notifications_category"
+            android:title="@string/notifications_title"
+            android:fragment="com.orion.support.fragments.Notifications"
+            android:icon="@drawable/ic_settings_notifications" />
+
+        <!-- Lockscreen -->
+        <Preference
+            android:key="lockscreen_category"
+            android:title="@string/sharpener_lockscreen_title"
+            android:fragment="com.orion.support.fragments.Lockscreen"
+            android:icon="@drawable/ic_settings_lockscreen" />        
+
+        <!-- Gestures -->
+        <Preference
+            android:key="gestures_category"
+            android:title="@string/gestures_title"
+            android:fragment="com.android.settings.gestures.GestureSettings"
+            settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"
+            android:icon="@drawable/ic_settings_gesture" />
+
+        <!-- Buttons -->
+        <Preference
+            android:key="buttons_category"
+            android:title="@string/buttons_title"
+            android:fragment="com.orion.support.fragments.Buttons"
+            android:icon="@drawable/ic_settings_buttons" />
+
+        <!-- Sounds -->
+        <Preference
+            android:key="sounds_category"
+            android:title="@string/sounds_title"
+            android:fragment="com.orion.support.fragments.Sounds"
+            android:icon="@drawable/ic_settings_sounds" />    
+
+        <!-- Misc -->
+        <Preference
+            android:key="misc_category"
+            android:title="@string/misc_title" 
+            android:fragment="com.orion.support.fragments.Miscellaneous"
+            android:icon="@drawable/ic_settings_misc" />            
+
+</PreferenceScreen>

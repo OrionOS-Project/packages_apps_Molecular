@@ -50,6 +50,7 @@
     <string name="molecular_summary">Can you find the molecule here?</string>
 
     <!-- Extension menu -->
+    <string name="more_menu_title">Other menu</string>
     <string name="about_title">About us?</string>
     <string name="about_summary">Look here.</string>
     <string name="lockscreen_title">Lock screen</string>

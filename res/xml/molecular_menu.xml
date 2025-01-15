@@ -16,78 +16,78 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/molecular_title"
-    android:summary="@string/molecular_summary">
+    android:title="@string/molecular_title">
 
-        <!-- About us? -->
-        <Preference
-            android:key="about_category"
-            android:title="@string/about_title"
-            android:fragment="com.orion.support.fragments.About"
-            android:icon="@drawable/ic_settings_orion" />
+        <com.android.settingslib.widget.TopIntroPreference
+            android:key="molecular_top_intro"
+            android:title="@string/molecular_summary"
+            settings:searchable="false"/>
 
-        <!-- Themes -->
-        <Preference
-            android:key="themes_category"
-            android:title="@string/themes_title"
-            android:fragment="com.orion.support.fragments.Themes"
-            android:icon="@drawable/ic_settings_themes" />    
+        <!-- Top (Lockscreen, About, and Quick settings)-->
+        <com.android.settingslib.widget.LayoutPreference
+            android:key="interface_menu_top"
+            android:layout="@layout/interface_menu_top_layout"/>
 
-        <!-- Status bar -->
-        <Preference
-            android:key="statusbar_category"
-            android:title="@string/statusbar_title"
-            android:fragment="com.orion.support.fragments.Statusbar"
-            android:icon="@drawable/ic_settings_statusbar" />
+        <PreferenceCategory
+            android:id="@+id/more_menu"
+            android:title="@string/more_menu_title">
 
-        <!-- Quicksettings -->
-        <Preference
-            android:key="quicksettings_category"
-            android:title="@string/quicksettings_title"
-            android:fragment="com.orion.support.fragments.Quicksettings"
-            android:icon="@drawable/ic_settings_quicksettings" />
+            <!-- Themes -->
+            <Preference
+                android:key="themes_category"
+                android:title="@string/themes_title"
+                android:fragment="com.orion.support.fragments.Themes"
+                android:icon="@drawable/ic_settings_themes"
+                settings:layout="@layout/interface_card_single_unsummary" />    
 
-        <!-- Notifications -->
-        <Preference
-            android:key="notifications_category"
-            android:title="@string/notifications_title"
-            android:fragment="com.orion.support.fragments.Notifications"
-            android:icon="@drawable/ic_settings_notifications" />
+            <!-- Status bar -->
+            <Preference
+                android:key="statusbar_category"
+                android:title="@string/statusbar_title"
+                android:fragment="com.orion.support.fragments.Statusbar"
+                android:icon="@drawable/ic_settings_statusbar"
+                settings:layout="@layout/interface_card_single_unsummary" />
 
-        <!-- Lockscreen -->
-        <Preference
-            android:key="lockscreen_category"
-            android:title="@string/sharpener_lockscreen_title"
-            android:fragment="com.orion.support.fragments.Lockscreen"
-            android:icon="@drawable/ic_settings_lockscreen" />        
+            <!-- Notifications -->
+            <Preference
+                android:key="notifications_category"
+                android:title="@string/notifications_title"
+                android:fragment="com.orion.support.fragments.Notifications"
+                android:icon="@drawable/ic_settings_notifications"
+                settings:layout="@layout/interface_card_single_unsummary" />       
 
-        <!-- Gestures -->
-        <Preference
-            android:key="gestures_category"
-            android:title="@string/gestures_title"
-            android:fragment="com.android.settings.gestures.GestureSettings"
-            settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"
-            android:icon="@drawable/ic_settings_gesture" />
+            <!-- Gestures -->
+            <Preference
+                android:key="gestures_category"
+                android:title="@string/gestures_title"
+                android:fragment="com.android.settings.gestures.GestureSettings"
+                settings:controller="com.android.settings.gestures.GesturesSettingPreferenceController"
+                android:icon="@drawable/ic_settings_gesture"
+                settings:layout="@layout/interface_card_single_unsummary" />
 
-        <!-- Buttons -->
-        <Preference
-            android:key="buttons_category"
-            android:title="@string/buttons_title"
-            android:fragment="com.orion.support.fragments.Buttons"
-            android:icon="@drawable/ic_settings_buttons" />
+            <!-- Buttons -->
+            <Preference
+                android:key="buttons_category"
+                android:title="@string/buttons_title"
+                android:fragment="com.orion.support.fragments.Buttons"
+                android:icon="@drawable/ic_settings_buttons"
+                settings:layout="@layout/interface_card_single_unsummary" />
 
-        <!-- Sounds -->
-        <Preference
-            android:key="sounds_category"
-            android:title="@string/sounds_title"
-            android:fragment="com.orion.support.fragments.Sounds"
-            android:icon="@drawable/ic_settings_sounds" />    
+            <!-- Sounds -->
+            <Preference
+                android:key="sounds_category"
+                android:title="@string/sounds_title"
+                android:fragment="com.orion.support.fragments.Sounds"
+                android:icon="@drawable/ic_settings_sounds"
+                settings:layout="@layout/interface_card_single_unsummary" />    
 
-        <!-- Misc -->
-        <Preference
-            android:key="misc_category"
-            android:title="@string/misc_title" 
-            android:fragment="com.orion.support.fragments.Miscellaneous"
-            android:icon="@drawable/ic_settings_misc" />            
+            <!-- Misc -->
+            <Preference
+                android:key="misc_category"
+                android:title="@string/misc_title" 
+                android:fragment="com.orion.support.fragments.Miscellaneous"
+                android:icon="@drawable/ic_settings_misc"
+                settings:layout="@layout/interface_card_single_unsummary" />
+        </PreferenceCategory>        
 
 </PreferenceScreen>

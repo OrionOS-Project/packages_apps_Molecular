@@ -33,7 +33,7 @@ import androidx.annotation.NonNull;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
-
+import android.content.res.Resources;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +43,8 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        final Context context = getContext();
+        final Resources resources = context.getResources();
         addPreferencesFromResource(R.xml.quicksettings_section);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();

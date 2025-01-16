@@ -22,6 +22,8 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.nfc.NfcAdapter;
 import android.os.Build;
+import android.os.Environment;
+import android.os.StatFs;
 import android.os.SystemProperties;
 import android.telephony.TelephonyManager;
 import android.telephony.SubscriptionManager;
@@ -32,11 +34,15 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.Surface;
 
+import com.android.internal.os.PowerProfile;
+import com.android.internal.util.MemInfoReader;
+
 import static org.lineageos.internal.util.DeviceKeysConstants.*;
 
 import androidx.annotation.NonNull;
 
 import java.util.Arrays;
+import java.lang.Math;
 
 public class DeviceUtils {
 
@@ -313,5 +319,50 @@ public class DeviceUtils {
     public static boolean isCurrentlySupportedPixel() {
         String deviceCodename = SystemProperties.get(DEVICE);
         return Arrays.asList(currentlySupportedPixels).contains(deviceCodename);
+    }
+
+    public static String getTotalRam() {
+        MemInfoReader memInfoReader = new MemInfoReader();
+        memInfoReader.readMemInfo();
+        long totalMemoryBytes = memInfoReader.getTotalSize();
+        double totalMemoryGB = totalMemoryBytes / (1024.0 * 1024.0 * 1024.0);
+        int roundedMemoryGB = roundToNearestKnownRamSize(totalMemoryGB);
+        return roundedMemoryGB + " GB";
+    }
+
+    private static int roundToNearestKnownRamSize(double memoryGB) {
+        int[] knownSizes = {1, 2, 3, 4, 6, 8, 10, 12, 16, 32, 48, 64};
+        if (memoryGB <= 0) return 1;
+        for (int size : knownSizes) {
+            if (memoryGB <= size) return size;
+        }
+        return knownSizes[knownSizes.length - 1];
+    }
+
+    public static String getStorageTotal(Context context) {
+        StatFs statFs = new StatFs(Environment.getDataDirectory().getPath());
+        long totalStorageBytes = statFs.getTotalBytes();
+        double totalStorageGB = totalStorageBytes / (1024.0 * 1024.0 * 1024.0);
+        int roundedStorageGB = roundToNearestKnownStorageSize(totalStorageGB);
+        if (roundedStorageGB >= 1024) {
+            return (roundedStorageGB / 1024) + " TB";
+        } else {
+            return roundedStorageGB + " GB";
+        }
+    }
+
+    private static int roundToNearestKnownStorageSize(double storageGB) {
+        int[] knownSizes = {16, 32, 64, 128, 256, 512, 1024};
+        if (storageGB <= 8) return (int) Math.ceil(storageGB);
+        for (int size : knownSizes) {
+            if (storageGB <= size) return size;
+        }
+        return (int) Math.ceil(storageGB);
+    }
+
+    public static String getBatteryCapacity(Context context) {
+        PowerProfile powerProfile = new PowerProfile(context);
+        int batteryCapacity = (int) Math.round(powerProfile.getAveragePower(PowerProfile.POWER_BATTERY_CAPACITY));
+        return batteryCapacity + " mAh";
     }
 }

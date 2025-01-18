@@ -21,7 +21,6 @@
     <PreferenceCategory
         android:key="miscellaneous_spoofing_category"
         android:title="@string/miscellaneous_spoofing_category">
-
         <!-- Component spoofing -->
         <Preference
             android:key="spoofing"
@@ -30,37 +29,39 @@
             android:fragment="com.orion.support.fragments.miscellaneous.Spoofing" />
     </PreferenceCategory>
 
-
-    <PreferenceCategory
-        android:key="power_menu_lock_screen_category"
-        android:title="@string/power_menu_lock_screen_category">
-        <!-- Secure lock screen power menu -->
-        <com.orion.support.preferences.SystemSettingSwitchPreference
-            android:key="lockscreen_enable_power_menu"
-            android:title="@string/power_menu_lock_screen_secure_title"
-            android:summary="@string/power_menu_lock_screen_secure_summary"
-            android:defaultValue="true" />
-    </PreferenceCategory> 
-
-   <PreferenceCategory
-        android:key="power_menu_interface_category"
-        android:title="@string/power_menu_interface_category">
-        <!-- Power menu actions -->
-        <Preference
-            android:key="power_menu_actions"
-            android:title="@string/power_menu_actions_title"
-            android:summary="@string/power_menu_actions_summary"
-            android:fragment="com.orion.support.fragments.powermenu.PowerMenuActions" />
-    </PreferenceCategory>
-
     <PreferenceCategory
         android:key="miscellaneous_developer_options_category"
         android:title="@string/miscellaneous_developer_options_category">
+        <!-- USB configuration -->
+        <Preference
+            android:key="default_usb_configuration"
+            android:title="@string/usb_default_config_title"
+            android:summary="@string/usb_default_config_summary"
+            android:fragment="com.android.settings.connecteddevice.usb.UsbDefaultFragment" />
+        <!-- Hide developer status -->
+        <Preference
+            android:key="hide_developer_status_settings"
+            android:title="@string/hide_developer_status_title"
+            android:summary="@string/hide_developer_status_summary"
+            android:fragment="com.android.settings.security.HideDeveloperStatusSettings"
+            settings:controller="com.android.settings.security.HideDeveloperStatusPreferenceController" />
+        <!-- No storage restrict -->
+        <com.orion.support.preferences.GlobalSettingSwitchPreference
+            android:key="no_storage_restrict"
+            android:title="@string/no_storage_restrict_title"
+            android:summary="@string/no_storage_restrict_summary"
+            android:defaultValue="false" />
        <!-- Block wallpaper dimming -->
         <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="block_wallpaper_dimming"
             android:title="@string/miscellaneous_block_wallpaper_dimming_title"
             android:summary="@string/miscellaneous_block_wallpaper_dimming_summary"
+            android:defaultValue="false" />
+       <!-- Hide screen capture status -->
+        <com.orion.support.preferences.GlobalSettingSwitchPreference
+            android:key="hide_screen_capture_status"
+            android:title="@string/hide_screen_capture_status_title"
+            android:summary="@string/hide_screen_capture_status_summary"
             android:defaultValue="false" />
         <!-- Unlimit screenrecord -->
         <com.orion.support.preferences.SystemSettingSwitchPreference
@@ -74,7 +75,6 @@
             android:title="@string/miscellaneous_app_downgrade_title"
             android:summary="@string/miscellaneous_app_downgrade_summary"
             android:defaultValue="false" />
-        
         <!-- Ignore window secure flags -->
         <com.orion.support.preferences.GlobalSettingSwitchPreference
             android:key="window_ignore_secure"

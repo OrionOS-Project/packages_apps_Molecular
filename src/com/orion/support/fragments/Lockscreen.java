@@ -92,30 +92,4 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
     }
-
-    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-        new BaseSearchIndexProvider(R.xml.lockscreen_section) {
-
-            @Override
-            public List<String> getNonIndexableKeys(Context context) {
-                List<String> keys = super.getNonIndexableKeys(context);
-                final Resources resources = context.getResources();
-                FingerprintManager fingerprintManager = (FingerprintManager)
-                    context.getSystemService(Context.FINGERPRINT_SERVICE);
-                if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-                    keys.add(KEY_RIPPLE_EFFECT);
-                    keys.add(KEY_SCREEN_OFF_UDFPS);
-                    keys.add(KEY_AUTHENTICATION_SUCCESS);
-                    keys.add(KEY_AUTHENTICATION_ERROR);
-                } else {
-                    boolean screenOffUdfpsAvailable = resources.getBoolean(
-                        com.android.internal.R.bool.config_supportScreenOffUdfps) ||
-                        !TextUtils.isEmpty(resources.getString(
-                            com.android.internal.R.string.config_dozeUdfpsLongPressSensorType));
-                    if (!screenOffUdfpsAvailable) {
-                        keys.add(KEY_SCREEN_OFF_UDFPS);
-                    }
-                }
-                return keys;
-            }
-};
+}

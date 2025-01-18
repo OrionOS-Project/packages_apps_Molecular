@@ -71,11 +71,11 @@
             android:entryValues="@array/status_bar_battery_percent_values"
             android:defaultValue="2" />
         <!-- Floating clear all -->
-        <com.orion.support.preferences.SystemSettingSwitchPreference
+<!--        <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="notification_material_dismiss"
             android:title="@string/quick_settings_floating_clear_all_title"
             android:summary="@string/quick_settings_floating_clear_all_summary"
-            android:defaultValue="false" />
+            android:defaultValue="false" /> -->
     </PreferenceCategory>
 
     <PreferenceCategory

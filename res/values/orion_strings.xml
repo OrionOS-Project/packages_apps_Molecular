@@ -112,7 +112,7 @@
     <string name="themes_system_font_title">System font</string>
     <string name="themes_system_font_summary">Set system font style</string>
     <string name="themes_lock_screen_clock_font_title">Lock screen clock font</string>
-    <string name="themes_lock_screen_clock_font_summary">Set lock screen clock font style</string
+    <string name="themes_lock_screen_clock_font_summary">Set lock screen clock font style</string>
     <string name="themes_icons_category">Icons</string>
     <string name="themes_system_icons_title">System Icons</string>
     <string name="themes_system_icons_summary">Set system icon style</string>
@@ -297,6 +297,7 @@
     <string name="quick_settings_miscellaneous_category">Miscellaneous</string>
     <string name="quick_settings_bluetooth_show_dialog_title">Bluetooth tile dialog</string>
     <string name="quick_settings_bluetooth_show_dialog_summary">Show bluetooth dialog or toggle bluetooth state on tapping bluetooth tile</string>
+    <string name="qs_layout_columns_rows_footer_text">QS rows should be equal or greater than QQS rows. Use higher number of columns for circle / square (A11) QS tile style.</string>
 
     <!-- Notifications -->
     <string name="notifications_heads_up_title">Heads up</string>

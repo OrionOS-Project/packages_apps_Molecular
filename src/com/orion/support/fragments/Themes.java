@@ -100,28 +100,4 @@ public class Themes extends SettingsPreferenceFragment implements OnPreferenceCh
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
     }
-    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-        new BaseSearchIndexProvider(R.xml.themes_section) {
-
-            @Override
-            public List<String> getNonIndexableKeys(Context context) {
-                List<String> keys = super.getNonIndexableKeys(context);
-                final Resources resources = context.getResources();
-                if (!DeviceUtils.deviceSupportsMobileData(context)) {
-                    keys.add(KEY_SIGNAL_ICON);
-                }
-
-                if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
-                    keys.add(KEY_UDFPS_ICON);
-                    keys.add(KEY_UDFPS_ANIMATION);
-                } else {
-                    if (!Utils.isPackageInstalled(context, "com.orion.udfps.icons")) {
-                        keys.add(KEY_UDFPS_ICON);
-                    }
-                    if (!Utils.isPackageInstalled(context, "com.orion.udfps.animations")) {
-                        keys.add(KEY_UDFPS_ANIMATION);
-                    }
-                }
-                return keys;
-            }
-};
+}

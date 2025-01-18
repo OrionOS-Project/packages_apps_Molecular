@@ -188,22 +188,4 @@ public class Statusbar extends SettingsPreferenceFragment implements OnPreferenc
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
     }
-
-    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-        new BaseSearchIndexProvider(R.xml.statusbar_section) {
-
-            @Override
-            public List<String> getNonIndexableKeys(Context context) {
-                List<String> keys = super.getNonIndexableKeys(context);
-                final Resources resources = context.getResources();
-
-                if (!DeviceUtils.deviceSupportsMobileData(context)) {
-                    keys.add(KEY_DATA_DISABLED_ICON);
-                    keys.add(KEY_FOUR_G_ICON);
-                }
-                if (!DeviceUtils.deviceSupportsBluetooth(context)) {
-                    keys.add(KEY_BLUETOOTH_BATTERY_STATUS);
-                }
-                return keys;
-            }
-};
+}

@@ -148,23 +148,4 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
     }
-
-    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-        new BaseSearchIndexProvider(R.xml.quicksettings_section) {
-
-            @Override
-            public List<String> getNonIndexableKeys(Context context) {
-                List<String> keys = super.getNonIndexableKeys(context);
-                final Resources resources = context.getResources();
-
-                boolean autoBrightnessAvailable = resources.getBoolean(
-                        com.android.internal.R.bool.config_automatic_brightness_available);
-                if (!autoBrightnessAvailable) {
-                    keys.add(KEY_SHOW_AUTO_BRIGHTNESS);
-                }
-                if (!DeviceUtils.deviceSupportsBluetooth(context)) {
-                    keys.add(KEY_QS_BLUETOOTH_SHOW_DIALOG);
-                }
-                return keys;
-            }
-        };
+}

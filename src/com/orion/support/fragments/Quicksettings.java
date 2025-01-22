@@ -122,7 +122,7 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         mBrightnessSliderHaptic.setEnabled(showSlider);
 
         mShowAutoBrightness = findPreference(KEY_SHOW_AUTO_BRIGHTNESS);
-        boolean automaticAvailable = mContext.getResources().getBoolean(
+        boolean automaticAvailable = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_automatic_brightness_available);
         if (automaticAvailable) {
             mShowAutoBrightness.setEnabled(showSlider);
@@ -141,7 +141,7 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
 
         mMiscellaneousCategory = (PreferenceCategory) findPreference(KEY_MISCELLANEOUS_CATEGORY);
 
-        if (!DeviceUtils.deviceSupportsBluetooth(mContext)) {
+        if (!DeviceUtils.deviceSupportsBluetooth(context)) {
             prefScreen.removePreference(mMiscellaneousCategory);
         }
 
@@ -151,7 +151,7 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
         mQsPanelStyle = (ListPreference) findPreference(KEY_QS_PANEL_STYLE);
         mQsPanelStyle.setOnPreferenceChangeListener(this);
 
-        checkQSOverlays(mContext);
+        checkQSOverlays(context);
     }
 
     @Override

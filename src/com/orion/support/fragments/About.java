@@ -30,6 +30,14 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import com.android.settings.R;
 import androidx.annotation.NonNull;
+import android.util.Log;
+
+import android.view.View;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
+import com.orion.support.Molecular;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
@@ -58,6 +66,23 @@ public class About extends SettingsPreferenceFragment implements OnPreferenceCha
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d("molecular", "welcome about");
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Log.d("molecular", "back from about");
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_content, new Molecular())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .commit();
+            }
+        });
     }
 
 }

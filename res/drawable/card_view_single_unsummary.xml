@@ -21,7 +21,7 @@
             <solid
                 android:color="#ffffffff" />
             <corners
-                android:radius="28dp"/>    
+                android:radius="99dp"/>    
         </shape>
     </item>
     <item
@@ -29,7 +29,7 @@
         <shape
             android:shape="rectangle">
             <corners
-                android:radius="28dp"/>   
+                android:radius="99dp"/>   
             <solid
                 android:color="@color/card_single_color" />
         </shape>

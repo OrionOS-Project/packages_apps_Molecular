@@ -34,6 +34,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.widget.Toast;
+import android.util.Log;
+
 import com.android.settings.R;
 
 import com.android.settings.SettingsPreferenceFragment;
@@ -46,8 +49,10 @@ import com.orion.support.fragments.About;
 import com.orion.support.fragments.Quicksettings;
 
 public class Molecular extends SettingsPreferenceFragment implements View.OnClickListener {
+    
     private LayoutPreference mTopLayout;
-
+    private String TAG="MolecularLogging";
+    
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -60,38 +65,67 @@ public class Molecular extends SettingsPreferenceFragment implements View.OnClic
         
         mTopLayout = findPreference("interface_menu_top");
         if (mTopLayout != null) {
+            Log.d(TAG, "mTopLayout not null");
             View root = mTopLayout.findViewById(R.id.interface_menu_top);
             MaterialCardView lockscreenSection = root.findViewById(R.id.lockscreen_section);
             LinearLayout aboutSection = root.findViewById(R.id.about_section);
             LinearLayout quickSettingsSection = root.findViewById(R.id.quicksettings_section);
 
-            if (lockscreenSection != null) lockscreenSection.setOnClickListener(this);
-            if (aboutSection != null) aboutSection.setOnClickListener(this);
-            if (quickSettingsSection != null) quickSettingsSection.setOnClickListener(this);
+            if (lockscreenSection != null) {
+                lockscreenSection.setOnClickListener(this);
+            } else {
+                Log.d(TAG, "lockscreenSection is null");
+            }
+            if (aboutSection != null) {
+                aboutSection.setOnClickListener(this);
+            } else {
+                Log.d(TAG, "aboutSection is null");
+            }
+            if (quickSettingsSection != null) {
+                quickSettingsSection.setOnClickListener(this);
+            } else {
+                Log.d(TAG, "quickSettingsSection is null");
+            }
         }
     }
 
     @Override
     public void onClick(View view) {
         Fragment selectedFragment = null;
+        
         int id = view.getId();
+        Log.d(TAG, "Onclick : CLicked");
+        Log.d(TAG, "getID view : " + id);
+        Log.d(TAG, "Comparing with lockscreen_section ID: " + R.id.lockscreen_section);
+        Log.d(TAG, "Comparing with about_section ID: " + R.id.about_section);
+        Log.d(TAG, "Comparing with quicksettings_section ID: " + R.id.quicksettings_section);
+
+        if (getActivity() != null) {
+            Log.d(TAG, "getActivity() is not null");
+        } else {
+            Log.d(TAG, "getActivity is null");
+        }
 
         if (id == R.id.lockscreen_section) {
             selectedFragment = new Lockscreen();
+            Log.d("molecular", "go to lockscreen");
         } else if (id == R.id.about_section) {
             selectedFragment = new About();
+            Log.d("molecular", "go to about");
         } else if (id == R.id.quicksettings_section) {
             selectedFragment = new Quicksettings();
+            Log.d("molecular", "go to qs");
         }
 
         if (selectedFragment != null && getActivity() != null) {
+            Log.d(TAG, "start Fragment transaction");
             FragmentManager parentManager = getActivity().getSupportFragmentManager();
-
             parentManager.beginTransaction()
                     .replace(R.id.main_content, selectedFragment)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .addToBackStack(null)
                     .commit();
+        } else {
+            Log.d(TAG, "selectedFragment is null");
         }
     }
 

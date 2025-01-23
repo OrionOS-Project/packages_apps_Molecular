@@ -25,6 +25,15 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.text.TextUtils;
 
+import android.view.View;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
+import com.orion.support.Molecular;
+
+import android.util.Log;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -42,7 +51,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.orion.support.preferences.SecureSettingSwitchPreference;
-
 
 public class Lockscreen extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
@@ -91,5 +99,22 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ORION;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d("molecular", "welcome locksreen");
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Log.d("molecular", "back from lockscreen");
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_content, new Molecular())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .commit();
+            }
+        });
     }
 }

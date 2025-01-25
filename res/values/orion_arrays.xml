@@ -288,7 +288,7 @@
         <item>@string/status_bar_date_format_custom</item>
     </string-array>
 
-    <!-- Status bar - Logo -->
+    <!-- Status bar - 	Logo -->
     <string-array name="status_bar_logo_position_entries" translatable="false">
         <item>@string/status_bar_logo_position_left</item>
         <item>@string/status_bar_logo_position_right</item>
@@ -300,6 +300,7 @@
     </string-array>
 
     <string-array name="status_bar_logo_style_entries" translatable="false">
+        <item>@string/status_bar_logo_style_orion</item>
         <item>@string/status_bar_logo_style_android</item>
         <item>@string/status_bar_logo_style_adidas</item>
         <item>@string/status_bar_logo_style_alien</item>

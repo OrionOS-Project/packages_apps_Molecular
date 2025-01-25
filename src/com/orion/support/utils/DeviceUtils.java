@@ -44,6 +44,11 @@ import androidx.annotation.NonNull;
 import java.util.Arrays;
 import java.lang.Math;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
 public class DeviceUtils {
 
     private static final String DEVICE = "ro.orion.device";
@@ -327,7 +332,7 @@ public class DeviceUtils {
         long totalMemoryBytes = memInfoReader.getTotalSize();
         double totalMemoryGB = totalMemoryBytes / (1024.0 * 1024.0 * 1024.0);
         int roundedMemoryGB = roundToNearestKnownRamSize(totalMemoryGB);
-        return roundedMemoryGB + " GB";
+        return String.valueOf(roundedMemoryGB);
     }
 
     private static int roundToNearestKnownRamSize(double memoryGB) {
@@ -339,15 +344,61 @@ public class DeviceUtils {
         return knownSizes[knownSizes.length - 1];
     }
 
+    private static String getTotalSwap() throws IOException {
+        String swap = null;
+        try (BufferedReader in = new BufferedReader(new FileReader("/proc/meminfo"))) {
+            String str;
+            while ((str = in.readLine()) != null) {
+                if (str.startsWith("SwapTotal:")) {
+                    swap = str;
+                    break;
+                }
+            }
+        }
+
+        if (swap != null && swap.length() > 0) {
+            StringTokenizer token = new StringTokenizer(swap, ":");
+            token.nextToken();
+            swap = token.nextToken().trim();
+        } else {
+            return "0GB";
+        }
+
+        try {
+            int swapValueKB = Integer.parseInt(swap.split(" ")[0]);
+            if (swapValueKB > 0) {
+                double swapValueGB = swapValueKB / (1024 * 1024);
+                return String.format("%.0fGB", swapValueGB);
+            }
+        } catch (NumberFormatException e) {
+            return "0GB";
+        }
+        return "0GB";
+    }
+
+    public static String getMemoryInfo() {
+        String totalRam = getTotalRam();
+        String totalSwap;
+        try {
+            totalSwap = getTotalSwap();
+        } catch (IOException e) {
+            totalSwap = "0GB";
+        }
+        if ("0GB".equals(totalSwap)) {
+            return totalRam + "GB";
+        }
+        return totalRam + "+" + totalSwap;
+    }
+
     public static String getStorageTotal(Context context) {
         StatFs statFs = new StatFs(Environment.getDataDirectory().getPath());
         long totalStorageBytes = statFs.getTotalBytes();
         double totalStorageGB = totalStorageBytes / (1024.0 * 1024.0 * 1024.0);
         int roundedStorageGB = roundToNearestKnownStorageSize(totalStorageGB);
         if (roundedStorageGB >= 1024) {
-            return (roundedStorageGB / 1024) + " TB";
+            return (roundedStorageGB / 1024) + "TB";
         } else {
-            return roundedStorageGB + " GB";
+            return roundedStorageGB + "GB";
         }
     }
 

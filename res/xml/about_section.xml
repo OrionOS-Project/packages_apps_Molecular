@@ -16,6 +16,11 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/about_title" >         
+    android:title="@string/about_title">
 
+     <!-- Main View About Us -->
+     <com.android.settingslib.widget.LayoutPreference
+          android:key="about_us_section"
+          android:layout="@layout/about_us_layout"/>
+            
 </PreferenceScreen>

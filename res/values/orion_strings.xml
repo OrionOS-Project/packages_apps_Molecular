@@ -45,6 +45,16 @@
     <string name="proper_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
     <string name="proper_seekbar_default_value_is_set">Default value is set</string>
     
+    <!-- About us? -->
+    <string name="about_orionos_project">It is an AOSP (Android Open Source Project) based project that is a continuation of LineageOS that prioritizes performance and minimalist design, provides sufficient feature requirements for long-term use and creates a healthy community environment.</string>
+    <string name="orionos_team_member_title"><u>OrionOS Project Team Members</u></string>
+    <string name="orionos_founder_title">Founder</string>
+    <string name="orionos_cofounder_title">Co-Founder</string>
+    <string name="orionos_core_dev_title">Core\nDeveloper</string>
+    <string name="orionos_uiux_title">UI/UX\nDesigner</string>
+    <string name="orionos_supported_project_title">Supported\nProject</string>
+    <string name="orionos_contributor_title">Contributor</string>
+
     <!-- Extension -->
     <string name="molecular_title">Molecular</string>
     <string name="molecular_summary">Can you find the molecule here?</string>

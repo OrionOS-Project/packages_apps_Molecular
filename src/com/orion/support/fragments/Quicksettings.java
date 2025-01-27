@@ -45,8 +45,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
-
 public class Quicksettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     @Override
@@ -72,11 +70,9 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d("molecular", "welcome qs");
         requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Log.d("molecular", "back from qs");
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.main_content, new Molecular())

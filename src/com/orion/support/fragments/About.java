@@ -69,16 +69,7 @@ public class About extends SettingsPreferenceFragment implements View.OnClickLis
         super.onViewCreated(view, savedInstanceState);
         initializeButtonUriMap();
         setupLayoutPreference();
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.main_content, new Molecular())
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commit();
-            }
-        });
+        setupBackPressHandler();
     }
 
     private void initializeButtonUriMap() {
@@ -105,6 +96,20 @@ public class About extends SettingsPreferenceFragment implements View.OnClickLis
                 }
             }
         }
+    }
+
+    private void setupBackPressHandler() {
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), 
+            new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.main_content, new Molecular())
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit();
+                }
+            });
     }
 
     @Override

@@ -38,7 +38,17 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.orion.support.utils.SystemUtils;
+import com.orion.support.preferences.GlobalSettingListPreference;
+
 public class Sounds extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+
+    private static final String KEY_LOCK_SOUND = "lock_sound";
+    private static final String KEY_UNLOCK_SOUND = "unlock_sound";
+
+
+    private GlobalSettingListPreference mLockSound;
+    private GlobalSettingListPreference mUnlockSound;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -48,10 +58,21 @@ public class Sounds extends SettingsPreferenceFragment implements OnPreferenceCh
         addPreferencesFromResource(R.xml.sounds_section);
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+	mLockSound = (GlobalSettingListPreference) findPreference(KEY_LOCK_SOUND);
+        mLockSound.setOnPreferenceChangeListener(this);
+        mUnlockSound = (GlobalSettingListPreference) findPreference(KEY_UNLOCK_SOUND);
+        mUnlockSound.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+	final Context context = getContext();
+        final ContentResolver resolver = context.getContentResolver();
+        if (preference == mLockSound || preference == mUnlockSound) {
+            SystemUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
         return false;
     }
 

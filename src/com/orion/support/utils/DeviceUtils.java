@@ -367,8 +367,9 @@ public class DeviceUtils {
         try {
             int swapValueKB = Integer.parseInt(swap.split(" ")[0]);
             if (swapValueKB > 0) {
-                double swapValueGB = swapValueKB / (1024 * 1024);
-                return String.format("%.0fGB", swapValueGB);
+                double swapValueGB = swapValueKB / (1024.0 * 1024.0);
+                int roundedSwapValueGB = (int) Math.ceil(swapValueGB);
+                return roundedSwapValueGB + "GB";
             }
         } catch (NumberFormatException e) {
             return "0GB";

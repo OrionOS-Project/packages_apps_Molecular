@@ -118,6 +118,12 @@
             android:summary="@string/quick_settings_layout_columns_rows_summary"
             android:fragment="com.orion.support.fragments.quicksettings.LayoutSettings" />
 
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+       	    android:key="qs_show_data_usage"
+            android:title="@string/qs_footer_datausage_title"
+            android:summary="@string/qs_footer_datausage_summary"
+            android:defaultValue="true" />
+
         <!-- Floating clear all -->
 <!--        <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="notification_material_dismiss"

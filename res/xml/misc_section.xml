@@ -45,12 +45,13 @@
             android:summary="@string/hide_developer_status_summary"
             android:fragment="com.android.settings.security.HideDeveloperStatusSettings"
             settings:controller="com.android.settings.security.HideDeveloperStatusPreferenceController" />
-        <!-- No storage restrict -->
+        <!-- No storage restrict 
         <com.orion.support.preferences.GlobalSettingSwitchPreference
             android:key="no_storage_restrict"
             android:title="@string/no_storage_restrict_title"
             android:summary="@string/no_storage_restrict_summary"
             android:defaultValue="false" />
+            -->
        <!-- Block wallpaper dimming -->
         <com.orion.support.preferences.SystemSettingSwitchPreference
             android:key="block_wallpaper_dimming"

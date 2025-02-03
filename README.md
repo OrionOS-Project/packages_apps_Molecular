@@ -1,7 +1,3 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/OrionOS-Project/packages_apps_Molecular/refs/heads/vic/interface_prototype.jpg" />
-</p>
-
 # Molecular
 ## Welcome to our Laboratory!
 

@@ -67,6 +67,14 @@
         app:cornerType="none" />
 
     <com.orion.ui.preference.OrionCardPreference
+        app:key="spoofing"
+        app:title="@string/spoofing_title"
+        app:summary="@string/spoofing_summary"
+        app:icon="@drawable/ic_spoofing_category_expressive"
+        app:fragment="com.orion.suppport.fragment.Spoofing"
+        app:cornerType="none" />
+
+    <com.orion.ui.preference.OrionCardPreference
         app:key="misc"
         app:title="@string/misc_title"
         app:summary="@string/misc_summary"

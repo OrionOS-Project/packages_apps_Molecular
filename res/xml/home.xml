@@ -46,6 +46,14 @@
         app:cornerType="none" />
 
     <com.orion.ui.preference.OrionCardPreference
+        app:key="notifications"
+        app:title="@string/notifications_title"
+        app:summary="@string/notifications_summary"
+        app:icon="@drawable/ic_notifications_category_expressive"
+        app:fragment="com.orion.support.fragment.Notifications"
+        app:cornerType="none" />
+
+    <com.orion.ui.preference.OrionCardPreference
         app:key="buttons"
         app:title="@string/buttons_title"
         app:summary="@string/buttons_summary"

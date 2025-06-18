@@ -14,21 +14,21 @@
         android:key="dark_ui_mode"
         android:title="@string/dark_ui_mode" />
 
-    <com.orion.support.preference.SystemThemePreference />
+    <!-- <com.orion.support.preference.SystemThemePreference /> -->
+    
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="monet_settings"
+        app:title="@string/monet_settings_title"
+        app:summary="@string/monet_settings_summary"
+        app:icon="@drawable/ic_brush_variant"
+        app:fragment="com.orion.support.fragment.MonetSettings"
+        app:cornerType="none" />
 
     <com.orion.ui.preference.OrionCardPreference
         app:key="status_bar"
         app:title="@string/statusbar_title"
         app:summary="@string/statusbar_summary"
-        app:icon="@drawable/ic_statusbar_category"
-        app:fragment="com.orion.support.fragment.StatusBar"
-        app:cornerType="top" />
-
-    <com.orion.ui.preference.OrionCardPreference
-        app:key="status_bar"
-        app:title="@string/statusbar_title"
-        app:summary="@string/statusbar_summary"
-        app:icon="@drawable/ic_statusbar_category"
+        app:icon="@drawable/ic_statusbar_category_expressive"
         app:cornerType="top">
         
         <intent
@@ -37,12 +37,19 @@
             android:targetClass="org.lineageos.lineageparts.statusbar.StatusBarSettings" />
     </com.orion.ui.preference.OrionCardPreference>
 
+    <com.orion.ui.preference.OrionCardPreference
+        app:key="qs"
+        app:title="@string/qs_title"
+        app:summary="@string/qs_summary"
+        app:icon="@drawable/ic_qs_category_expressive"
+        app:fragment="com.orion.support.fragment.QS"
+        app:cornerType="none" />
 
     <com.orion.ui.preference.OrionCardPreference
         app:key="buttons"
         app:title="@string/buttons_title"
         app:summary="@string/buttons_summary"
-        app:icon="@drawable/ic_buttons_category"
+        app:icon="@drawable/ic_buttons_category_expressive"
         app:cornerType="none">
         
         <intent
@@ -55,7 +62,7 @@
         app:key="lockscreen"
         app:title="@string/lockscreen_title"
         app:summary="@string/lockscreen_summary"
-        app:icon="@drawable/ic_lockscreen_category"
+        app:icon="@drawable/ic_lockscreen_category_expressive"
         app:fragment="com.orion.support.fragment.Lockscreen"
         app:cornerType="none" />
 
@@ -63,7 +70,7 @@
         app:key="misc"
         app:title="@string/misc_title"
         app:summary="@string/misc_summary"
-        app:icon="@drawable/ic_misc_category"
+        app:icon="@drawable/ic_misc_category_expressive"
         app:fragment="com.orion.support.fragment.Misc"
         app:cornerType="bottom" />
 

@@ -28,7 +28,7 @@
 
     <!-- Monet settings -->
     <string name="monet_settings_title">Monet Personalization</string>
-    <string name="monet_settings_sammary">Customize the dynamic theme engine</string>
+    <string name="monet_settings_summary">Customize the dynamic theme engine</string>
     <string name="monet_engine_custom_color_title">Accent color</string>
     <string name="monet_engine_custom_color_summary">Choose custom color for accent</string>
     <string name="monet_engine_custom_bgcolor_title">Background color</string>

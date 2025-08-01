@@ -11,6 +11,12 @@
     android:title="@string/lockscreen_title" >
 
     <com.orion.support.preferences.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_status_bar"
+        android:title="@string/lockscreen_hide_status_bar_title"
+        android:summary="@string/lockscreen_hide_status_bar_summary"
+        android:defaultValue="false" />
+
+    <com.orion.support.preferences.SystemSettingSwitchPreference
         android:key="auth_ripple_enabled"
         android:title="@string/enable_fingerprint_ripple_effect_title"
         android:summary="@string/enable_fingerprint_ripple_effect_summary"

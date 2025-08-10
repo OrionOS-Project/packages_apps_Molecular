@@ -68,7 +68,7 @@
         settings:units="%"
         settings:showSign="true" />
 
-    <com.orion.support.support.preferences.ProperSeekBarPreference
+    <com.orion.support.preferences.ProperSeekBarPreference
         android:key="chroma_factor"
         android:title="@string/monet_engine_chroma_factor_title"
         android:summary="@string/monet_engine_chroma_factor_summary"

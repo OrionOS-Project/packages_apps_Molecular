@@ -79,7 +79,7 @@
         app:title="@string/spoofing_title"
         app:summary="@string/spoofing_summary"
         app:icon="@drawable/ic_spoofing_category_expressive"
-        app:fragment="com.orion.suppport.fragment.Spoofing"
+        app:fragment="com.orion.support.fragment.Spoofing"
         app:cornerType="none" />
 
     <com.orion.ui.preference.OrionCardPreference

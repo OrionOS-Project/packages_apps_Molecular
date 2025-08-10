@@ -15,13 +15,13 @@
         android:summary="@string/lockscreen_hide_status_bar_summary"
         android:defaultValue="false" />
 
-    <com.orion.support.support.preferences.SecureSettingSwitchPreference
+    <com.orion.support.preferences.SecureSettingSwitchPreference
         android:key="keyguard_affordance_single_tap"
         android:title="@string/keyguard_affordance_single_tap_title"
         android:summary="@string/keyguard_affordance_single_tap_summary"
         android:defaultValue="false" />
 
-    <com.orion.support.support.preferences.SystemSettingSwitchPreference
+    <com.orion.support.preferences.SystemSettingSwitchPreference
         android:key="auth_ripple_enabled"
         android:title="@string/enable_fingerprint_ripple_effect_title"
         android:summary="@string/enable_fingerprint_ripple_effect_summary"
@@ -36,10 +36,16 @@
         android:entryValues="@array/screen_off_animation_values"
         android:defaultValue="0" />
 
-    <Preference
-        android:key="pulse_settings"
-        android:title="@string/pulse_settings"
-        android:summary="@string/pulse_settings_summary"
-        android:fragment="com.orion.support.fragment.PulseSettings" />
+    <PreferenceCategory
+        android:key="pulse_visualizer_category"
+        android:title="@string/pulse_visualizer_category_title" >
+
+        <Preference
+            android:key="pulse_settings"
+            android:title="@string/pulse_settings"
+            android:summary="@string/pulse_settings_summary"
+            android:fragment="com.orion.support.fragment.PulseSettings" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

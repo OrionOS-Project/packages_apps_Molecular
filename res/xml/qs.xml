@@ -11,6 +11,55 @@
     android:title="@string/qs_title" >
 
     <PreferenceCategory
+        android:key="general_category"
+        android:title="@string/general_category_title"
+        android:summary="@string/general_category_summary" >
+
+        <com.orion.support.preferences.SystemSettingListPreference
+            android:key="qs_enable_tile_squishing"
+            android:title="@string/qs_enable_tile_squishing_title"
+            android:summary="%s"
+            android:entries="@array/qs_tile_shape_mode_entries"
+            android:entryValues="@array/qs_tile_shape_mode_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="notifications_category"
+        android:title="@string/qs_notifications_category_title" >
+
+        <com.orion.support.preferences.SecureSettingSeekBarPreference
+            android:key="notification_row_transparency_level"
+            android:title="@string/notification_row_transparency_level_title"
+            android:summary="@string/notification_row_transparency_level_summary"
+            android:defaultValue="85"
+            android:max="100"
+            settings:min="0"
+            settings:units="%" />
+
+        <com.orion.support.preferences.SecureSettingSwitchPreference
+            android:key="notification_row_transparency_context_aware"
+            android:title="@string/notification_row_transparency_context_title"
+            android:summary="@string/notification_row_transparency_context_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="layout_category"
+        android:title="@string/qs_layout_settings_title"
+        android:summary="@string/qs_layout_category_summary" >
+
+        <Preference
+            android:key="qs_layout_settings"
+            android:title="@string/qs_layout_settings_title"
+            android:summary="@string/qs_layout_category_summary"
+            android:fragment="com.orion.support.fragment.QsLayoutSettings" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="brightness_category"
         android:title="@string/brightness_category_title" >
 
@@ -27,6 +76,28 @@
             android:summary="@string/qs_brightness_position_position_summary" 
             android:defaultValue="false" />
 
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_auto_brightness"
+            android:title="@string/qs_show_auto_brightness_title"
+            android:summary="@string/qs_show_auto_brightness_summary"
+            android:defaultValue="true" />
+
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_brightness_match_tile_shape"
+            android:title="@string/qs_brightness_match_tile_shape_title"
+            android:summary="@string/qs_brightness_match_tile_shape_summary"
+            android:defaultValue="false"
+            android:disableDependentsState="true" />
+
+        <com.orion.support.preferences.SystemSettingListPreference
+            android:key="qs_brightness_slider_shape"
+            android:title="@string/qs_brightness_slider_shape_title"
+            android:summary="@string/qs_brightness_slider_shape_summary"
+            android:entries="@array/qs_brightness_slider_shape_entries"
+            android:entryValues="@array/qs_brightness_slider_shape_values"
+            android:defaultValue="0"
+            android:dependency="qs_brightness_match_tile_shape" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -37,6 +108,51 @@
             android:title="@string/qs_header_image_title"
             android:summary="@string/qs_header_image_summary"
             android:fragment="com.orion.support.fragment.QsHeaderImageSettings" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="data_usage_category"
+        android:title="@string/data_usage_category_title"
+        android:summary="@string/data_usage_category_summary" >
+
+        <com.orion.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_data_usage"
+            android:title="@string/qs_footer_datausage_title"
+            android:defaultValue="true" />
+
+        <com.orion.support.preferences.SecureSettingListPreference
+            android:key="qs_data_usage_cycle_type"
+            android:title="@string/qs_data_usage_cycle_type_title"
+            android:summary="@string/qs_data_usage_cycle_type_summary"
+            android:entries="@array/qs_data_usage_cycle_type_entries"
+            android:entryValues="@array/qs_data_usage_cycle_type_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="footer_category"
+        android:title="@string/footer_category_title"
+        android:summary="@string/footer_category_summary" >
+
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_edit_button"
+            android:title="@string/qs_show_edit_button_title"
+            android:summary="@string/qs_show_edit_button_summary"
+            android:defaultValue="true" />
+
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_settings_icon"
+            android:title="@string/qs_show_settings_icon_title"
+            android:summary="@string/qs_show_settings_icon_summary"
+            android:defaultValue="true" />
+
+        <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_power_menu_icon"
+            android:title="@string/qs_show_power_menu_icon_title"
+            android:summary="@string/qs_show_power_menu_icon_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

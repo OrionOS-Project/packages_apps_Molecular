@@ -38,6 +38,18 @@
         android:defaultValue="0" />
 
     <PreferenceCategory
+        android:key="media_art_category"
+        android:title="@string/ls_media_art_title" >
+
+        <Preference
+            android:key="media_art_settings"
+            android:title="@string/ls_media_art_title"
+            android:summary="@string/ls_media_art_summary"
+            android:fragment="com.orion.support.fragment.MediaArtSettings" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="pulse_visualizer_category"
         android:title="@string/pulse_visualizer_category_title" >
 

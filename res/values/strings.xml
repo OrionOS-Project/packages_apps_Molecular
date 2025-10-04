@@ -30,6 +30,16 @@
     <string name="dark_mode_summary_default">Enable system dark theme</string>
     <string name="dark_mode_summary_powersave">Power saver is enabled</string>
 
+    <!-- Misc Categories -->
+    <string name="general_category_title">General</string>
+    <string name="general_category_summary">General global system settings</string>
+    <string name="security_category_title">Security</string>
+    <string name="security_category_summary">Security and privacy related settings</string>
+    <string name="dashboard_category_title">Dashboard</string>
+    <string name="dashboard_category_summary">Dashboard appearance settings</string>
+    <string name="effects_category_title">Effects</string>
+    <string name="effects_category_summary">Visual effects and animations</string>
+
     <!-- Monet settings -->
     <string name="monet_settings_title">Monet Personalization</string>
     <string name="monet_settings_summary">Customize the dynamic theme engine</string>

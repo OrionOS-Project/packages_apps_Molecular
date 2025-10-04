@@ -9,19 +9,31 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/spoofing_title" >
 
-    <com.orion.support.preference.KeyboxDataPreference
-        android:key="keybox_data_setting"
-        android:title="@string/keybox_data_title"/>
+    <PreferenceCategory
+        android:title="@string/spoofing_attestation_category_title"
+        android:summary="@string/spoofing_attestation_category_summary">
 
-    <com.orion.support.preference.PifDataPreference
-        android:key="pif_data_setting"
-        android:title="@string/pif_data_title"/>
+        <com.orion.support.preference.KeyboxDataPreference
+            android:key="keybox_data_setting"
+            android:title="@string/keybox_data_title"/>
 
-    <!-- Google Photos spoof -->
-    <com.orion.support.preferences.SystemPropertySwitchPreference
-        android:key="persist.sys.pihooks.gphotos"
-        android:title="@string/gphotos_spoof_title"
-        android:summary="@string/gphotos_spoof_summary"
-        android:defaultValue="true" />
+        <com.orion.support.preference.PifDataPreference
+            android:key="pif_data_setting"
+            android:title="@string/pif_data_title"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/spoofing_apps_category_title"
+        android:summary="@string/spoofing_apps_category_summary">
+
+        <!-- Google Photos spoof -->
+        <com.orion.support.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pihooks.gphotos"
+            android:title="@string/gphotos_spoof_title"
+            android:summary="@string/gphotos_spoof_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

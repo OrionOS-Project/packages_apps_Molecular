@@ -22,11 +22,20 @@
             android:entryValues="@array/qs_tile_shape_mode_values"
             android:defaultValue="0" />
 
+        <com.orion.support.preferences.SecureSettingSeekBarPreference
+            android:key="notification_row_transparency_level"
+            android:title="@string/notification_row_transparency_level_title"
+            android:summary="@string/notification_row_transparency_level_summary"
+            android:defaultValue="15"
+            android:max="100"
+            settings:min="0"
+            settings:units="%" />
+
         <com.orion.support.preferences.SecureSettingSwitchPreference
-            android:key="notification_row_transparency"
-            android:title="@string/notification_row_transparency_title"
-            android:summary="@string/notification_row_transparency_summary"
-            android:defaultValue="false" />
+            android:key="notification_row_transparency_context_aware"
+            android:title="@string/notification_row_transparency_context_title"
+            android:summary="@string/notification_row_transparency_context_summary"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 

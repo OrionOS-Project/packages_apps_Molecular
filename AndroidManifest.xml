@@ -27,4 +27,13 @@
     <protected-broadcast android:name="lineageos.intent.action.UPDATE_PREFERENCE" />
     <protected-broadcast android:name="lineageos.intent.action.REFRESH_PREFERENCE" />
 
+    <application>
+        <activity
+            android:name=".MolecularComposeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+        </activity>
+    </application>
+
 </manifest>

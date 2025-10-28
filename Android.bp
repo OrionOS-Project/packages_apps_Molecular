@@ -6,7 +6,7 @@ android_library {
         enabled: false,
     },
 
-    srcs: ["src/**/*.java"],
+    srcs: ["src/**/*.java", "src/**/*.kt"],
 
     static_libs: [
         "SettingsLib",
@@ -14,8 +14,17 @@ android_library {
         "androidx.preference_preference",
         "androidx.appcompat_appcompat",
         "androidx.recyclerview_recyclerview",
-	"SettingsLibMainSwitchPreference",
+        "SettingsLibMainSwitchPreference",
+        "androidx.activity_activity-compose",
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.material3_material3",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.ui_ui",
+        "androidx.compose.ui_ui-tooling",
+        "com.google.accompanist.accompanist-pager",
     ],
+
+    plugins: ["androidx.compose.compiler_compiler"],
 
     resource_dirs: ["res"],
 

@@ -9,20 +9,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
-import com.google.accompanist.pager.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
 import kotlin.math.absoluteValue
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MolecularCarousel() {
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = { 3 })
 
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HorizontalPager(
-            count = 3,
+            pageCount = 3,
             state = pagerState,
             modifier = Modifier
                 .fillMaxWidth()
@@ -32,7 +36,8 @@ fun MolecularCarousel() {
             Card(
                 modifier = Modifier
                     .graphicsLayer {
-                        val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
+                        // compute offset for foundation pager
+                        val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
 
                         // Scale the page down when it's not the current page
                         lerp(
@@ -72,13 +77,26 @@ fun MolecularCarousel() {
             }
         }
 
-        // Horizontal dot indicators
-        HorizontalPagerIndicator(
-            pagerState = pagerState,
+        Row(
             modifier = Modifier
                 .padding(16.dp),
-            activeColor = MaterialTheme.colorScheme.primary
-        )
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            val current = pagerState.currentPage
+            repeat(3) { index ->
+                val selected = index == current
+                Box(
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .size(if (selected) 10.dp else 6.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+                        )
+                ) {}
+            }
+        }
     }
 }
 

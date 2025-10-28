@@ -15,6 +15,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.clip
 import kotlin.math.absoluteValue
+import androidx.compose.foundation.ExperimentalFoundationApi
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -26,7 +27,6 @@ fun MolecularCarousel() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HorizontalPager(
-            pageCount = 3,
             state = pagerState,
             modifier = Modifier
                 .fillMaxWidth()

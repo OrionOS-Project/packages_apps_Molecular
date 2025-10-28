@@ -20,10 +20,8 @@ android_library {
         "androidx.compose.material3_material3",
         "androidx.compose.foundation_foundation",
         "androidx.compose.ui_ui",
-    "androidx.compose.ui_ui-tooling",
+	    "androidx.compose.ui_ui-tooling",
     ],
-
-    plugins: ["androidx.compose.compiler_compiler"],
 
     resource_dirs: ["res"],
 

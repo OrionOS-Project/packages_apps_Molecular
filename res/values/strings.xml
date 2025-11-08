@@ -407,4 +407,8 @@ The progress bar dynamically switches between media and download states, ensurin
     <!-- GMS cert chain -->
     <string name="gms_cert_chain_title">Disable forcing strong integrity</string>
     <string name="gms_cert_chain_summary">Forcing strong integrity breaks apps like Google Pay, enabling this option fixes such apps.</string>
+
+    <!-- chinese lunar calendar -->
+    <string name="qs_show_lunar_calendar_title">Chinese Lunar Calendar</string>
+    <string name="qs_show_lunar_calendar_summary">Show lunar calendar in Quick Settings</string>
 </resources>

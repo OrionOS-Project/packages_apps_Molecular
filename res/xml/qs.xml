@@ -22,6 +22,18 @@
             android:entryValues="@array/qs_tile_shape_mode_values"
             android:defaultValue="0" />
 
+         <com.orion.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_lunar_calendar"
+            android:title="@string/qs_show_lunar_calendar_title"
+            android:summary="@string/qs_show_lunar_calendar_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="notifications_category"
+        android:title="@string/qs_notifications_category_title" >
+
         <com.orion.support.preferences.SecureSettingSeekBarPreference
             android:key="notification_row_transparency_level"
             android:title="@string/notification_row_transparency_level_title"

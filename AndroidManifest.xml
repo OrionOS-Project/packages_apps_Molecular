@@ -29,7 +29,7 @@
 
     <application>
         <activity
-            android:name=".MolecularComposeActivity"
+            android:name=".MolecularComposeFragment"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Material3.DayNight.NoActionBar">

@@ -32,7 +32,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import com.orion.support.Molecular;
+import com.orion.support.MolecularComposeFragment;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
@@ -105,7 +105,7 @@ public class About extends SettingsPreferenceFragment implements View.OnClickLis
                 public void handleOnBackPressed() {
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.main_content, new Molecular())
+//                            .replace(R.id.main_content, new MolecularComposeFragment())
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                             .commit();
                 }

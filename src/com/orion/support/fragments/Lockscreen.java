@@ -28,7 +28,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import com.orion.support.Molecular;
+import com.orion.support.MolecularComposeFragment;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -80,7 +80,7 @@ public class Lockscreen extends SettingsPreferenceFragment implements OnPreferen
                 public void handleOnBackPressed() {
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.main_content, new Molecular())
+//                            .replace(R.id.main_content, new MolecularComposeFragment())
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                             .commit();
                 }

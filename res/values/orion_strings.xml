@@ -80,11 +80,11 @@
     <!-- Extension menu -->
     <string name="more_menu_title">Other menu</string>
     <string name="about_title">About us?</string>
-    <string name="about_summary">Look here.</string>
-    <string name="lockscreen_title">Lock screen</string>
+    <string name="about_summary">Already to meet our team? Look here..</string>
+    <string name="lockscreen_title">Lockscreen</string>
     <string name="lockscreen_summary">Everything about look screen customization is here...</string>
     <string name="quicksettings_title">Quick settings</string>
-    <string name="quicksettings_summary">Customize here</string>
+    <string name="quicksettings_summary">Want to change your quick settings? Customize here..</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="statusbar_title">Status bar</string>
     <string name="buttons_title">Buttons</string>

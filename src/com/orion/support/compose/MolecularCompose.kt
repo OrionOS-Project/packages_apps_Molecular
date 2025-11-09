@@ -21,7 +21,9 @@ import com.orion.support.compose.section.*
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MolecularCarousel() {
-    val pagerState = rememberPagerState(pageCount = { 3 })
+    val pageCount = 3
+    val totalPages = pageCount * 1000
+    val pagerState = rememberPagerState(initialPage = totalPages / 2, pageCount = { totalPages })
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -31,46 +33,39 @@ fun MolecularCarousel() {
             state = pagerState,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(400.dp),
-            contentPadding = PaddingValues(horizontal = 65.dp)
+                .padding(top = 40.dp)
+                .height(320.dp),
+            contentPadding = PaddingValues(horizontal = 105.dp),
+            pageSpacing = 0.dp
         ) { page ->
+            val actualPage = page % pageCount
+
             Card(
                 modifier = Modifier
                     .graphicsLayer {
-                        // compute offset for foundation pager
-                        val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+                        val pageOffset =
+                            ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
 
-                        // Scale the page down when it's not the current page
-                        lerp(
-                            start = 0.85f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                        ).also { scale ->
-                            scaleX = scale
-                            scaleY = scale
-                        }
-
-                        // Add glass/cover flow effect
-                        alpha = lerp(
-                            start = 0.5f,
+                        val scale = lerp(
+                            start = 0.6f,
                             stop = 1f,
                             fraction = 1f - pageOffset.coerceIn(0f, 1f)
                         )
+                        scaleX = scale
+                        scaleY = scale
 
-                        // Add 3D rotation effect
-                        rotationY = lerp(
-                            start = 45f,
-                            stop = 0f,
+                        alpha = lerp(
+                            start = 0.3f,
+                            stop = 1f,
                             fraction = 1f - pageOffset.coerceIn(0f, 1f)
                         )
                     }
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                elevation = CardDefaults.cardElevation(
-                    defaultElevation = 8.dp
-                )
+                    .width(200.dp)
+                    .padding(1.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+                shape = MaterialTheme.shapes.large
             ) {
-                when (page) {
+                when (actualPage) {
                     0 -> AboutSection()
                     1 -> QuickSettingsSection()
                     2 -> LockscreenSection()
@@ -78,24 +73,26 @@ fun MolecularCarousel() {
             }
         }
 
+        val current = pagerState.currentPage % pageCount
         Row(
-            modifier = Modifier
-                .padding(16.dp),
+            modifier = Modifier.padding(top = 16.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val current = pagerState.currentPage
-            repeat(3) { index ->
+            repeat(pageCount) { index ->
                 val selected = index == current
                 Box(
                     modifier = Modifier
                         .padding(4.dp)
-                        .size(if (selected) 10.dp else 6.dp)
+                        .height(8.dp)
+                        .width(if (selected) 22.dp else 8.dp)
                         .clip(CircleShape)
                         .background(
-                            if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+                            if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(
+                                alpha = 0.3f
+                            )
                         )
-                ) {}
+                )
             }
         }
     }

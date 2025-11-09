@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.clip
 import kotlin.math.absoluteValue
 import androidx.compose.foundation.ExperimentalFoundationApi
+import com.orion.support.compose.section.*
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -97,59 +98,5 @@ fun MolecularCarousel() {
                 ) {}
             }
         }
-    }
-}
-
-@Composable
-fun AboutSection() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // About section content
-        Text(
-            text = "About OrionOS",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        // Add more about content here
-    }
-}
-
-@Composable
-fun QuickSettingsSection() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Quick Settings content
-        Text(
-            text = "Quick Settings",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        // Add quick settings content here
-    }
-}
-
-@Composable
-fun LockscreenSection() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Lockscreen content
-        Text(
-            text = "Lockscreen Settings",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        // Add lockscreen settings content here
     }
 }

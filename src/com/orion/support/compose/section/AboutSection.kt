@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import package com.orion.support.R
+import com.orion.support.R
 import androidx.compose.ui.res.stringResource
 
 @Composable

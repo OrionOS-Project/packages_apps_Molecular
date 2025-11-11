@@ -2,7 +2,6 @@ android_library {
 
     name: "VendorSupport-preference",
     manifest: "AndroidManifest.xml",
-    package_name: "com.orion.support",
 
     optimize: {
         enabled: false,

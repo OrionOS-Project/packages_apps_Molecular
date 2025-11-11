@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.orion.support.R
+import com.android.settings.R
 import androidx.compose.ui.res.stringResource
 
 @Composable
@@ -42,7 +42,7 @@ fun LockscreenSection(
             modifier = Modifier.fillMaxSize()
         ) {
             Image(
-                painter = painterResource(id = R.drawable.background_molecular),
+                painter = painterResource(id = R.drawable.molecular_background_molecular),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
@@ -61,7 +61,7 @@ fun LockscreenSection(
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_settings_lockscreen),
+                        painter = painterResource(id = R.drawable.molecular_ic_settings_lockscreen),
                         contentDescription = "Lockscreen Background",
                         modifier = Modifier.size(40.dp),
                     )

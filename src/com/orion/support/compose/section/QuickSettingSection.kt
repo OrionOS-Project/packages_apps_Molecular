@@ -32,7 +32,6 @@ fun QuickSettingsSection(
         modifier = Modifier
             .fillMaxWidth()
             .height(335.dp)
-            .padding(16.dp)
             .clip(RoundedCornerShape(18.dp))
             .clickable { onClick() },
         shape = RoundedCornerShape(18.dp),

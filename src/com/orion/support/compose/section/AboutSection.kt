@@ -25,7 +25,9 @@ import com.android.settings.R
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import androidx.compose.ui.graphics.Color
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
+import com.orion.support.fragments.About
 
 @Composable
 fun AboutSection(
@@ -40,7 +42,17 @@ fun AboutSection(
             .fillMaxWidth()
             .height(335.dp)
             .clip(RoundedCornerShape(18.dp))
-            .clickable { onClick() },
+            .clickable { 
+                (context as? FragmentActivity)?.let { activity ->
+                    val fragment = About()
+                    activity.supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_content, fragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack(null)
+                        .commit()
+                }
+                onClick()
+             },
         shape = RoundedCornerShape(18.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {

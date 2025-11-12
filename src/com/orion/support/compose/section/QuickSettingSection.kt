@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +25,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.compose.ui.graphics.Color
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
+import com.orion.support.fragments.Quicksettings
 
 @Composable
 fun QuickSettingsSection(
@@ -40,7 +42,17 @@ fun QuickSettingsSection(
             .fillMaxWidth()
             .height(335.dp)
             .clip(RoundedCornerShape(18.dp))
-            .clickable { onClick() },
+            .clickable { 
+                (context as? FragmentActivity)?.let { activity ->
+                    val fragment = Quicksettings()
+                    activity.supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_content, fragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack(null)
+                        .commit()
+                }
+                onClick()
+             },
         shape = RoundedCornerShape(18.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {

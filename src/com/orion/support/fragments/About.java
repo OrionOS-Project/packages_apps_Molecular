@@ -105,7 +105,7 @@ public class About extends SettingsPreferenceFragment implements View.OnClickLis
                 public void handleOnBackPressed() {
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     fragmentManager.beginTransaction()
-//                            .replace(R.id.main_content, new MolecularComposeFragment())
+                            .replace(R.id.main_content, new MolecularComposeFragment())
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                             .commit();
                 }

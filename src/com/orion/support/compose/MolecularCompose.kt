@@ -1,6 +1,9 @@
 package com.orion.support.compose
 
 import androidx.compose.animation.core.*
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -65,10 +68,22 @@ fun MolecularCarousel() {
                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                 shape = MaterialTheme.shapes.large
             ) {
-                when (page) {
-                    0 -> AboutSection()
-                    1 -> QuickSettingsSection()
-                    2 -> LockscreenSection()
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                ) {
+                    androidx.compose.animation.AnimatedVisibility(
+                        visible = pagerState.currentPage == page,
+                        enter = fadeIn(animationSpec = tween(durationMillis = 400)),
+                        exit = fadeOut(animationSpec = tween(durationMillis = 300))
+                    ) {
+                        when (page) {
+                            0 -> AboutSection()
+                            1 -> QuickSettingsSection()
+                            2 -> LockscreenSection()
+                        }
+                    }
                 }
             }
         }

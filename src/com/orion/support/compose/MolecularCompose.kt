@@ -20,10 +20,17 @@ import androidx.compose.ui.draw.clip
 import kotlin.math.absoluteValue
 import androidx.compose.foundation.ExperimentalFoundationApi
 import com.orion.support.compose.section.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MolecularCarousel() {
+    val context = LocalContext.current
+    val accentColor = Color(
+        ContextCompat.getColor(context, android.R.color.system_accent1_300)
+    )
     val pageCount = 3
     val pagerState = rememberPagerState(
         initialPage = 1, 
@@ -65,13 +72,18 @@ fun MolecularCarousel() {
                     }
                     .width(200.dp)
                     .padding(1.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                 shape = MaterialTheme.shapes.large
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.surfaceVariant)
+                        .background(
+                                if (pagerState.currentPage == page)
+                                    accentColor
+                                else
+                                    MaterialTheme.colorScheme.onSurface
+                            )
                 ) {
                     androidx.compose.animation.AnimatedVisibility(
                         visible = pagerState.currentPage == page,

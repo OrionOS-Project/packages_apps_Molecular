@@ -23,11 +23,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android.settings.R
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun LockscreenSection(
     onClick: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+    val accentColor = Color(
+        ContextCompat.getColor(context, android.R.color.system_accent1_300)
+    )
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -38,14 +45,8 @@ fun LockscreenSection(
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().background(accentColor)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.molecular_background_molecular),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
             Column(
                 modifier = Modifier
                     .fillMaxSize()

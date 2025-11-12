@@ -22,8 +22,10 @@ import com.orion.support.compose.section.*
 @Composable
 fun MolecularCarousel() {
     val pageCount = 3
-    val totalPages = pageCount * 1000
-    val pagerState = rememberPagerState(initialPage = totalPages / 2, pageCount = { totalPages })
+    val pagerState = rememberPagerState(
+        initialPage = 1, 
+        pageCount = { pageCount } 
+    )
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -38,8 +40,6 @@ fun MolecularCarousel() {
             contentPadding = PaddingValues(horizontal = 105.dp),
             pageSpacing = 0.dp
         ) { page ->
-            val actualPage = page % pageCount
-
             Card(
                 modifier = Modifier
                     .graphicsLayer {
@@ -65,7 +65,7 @@ fun MolecularCarousel() {
                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                 shape = MaterialTheme.shapes.large
             ) {
-                when (actualPage) {
+                when (page) {
                     0 -> AboutSection()
                     1 -> QuickSettingsSection()
                     2 -> LockscreenSection()
@@ -73,7 +73,7 @@ fun MolecularCarousel() {
             }
         }
 
-        val current = pagerState.currentPage % pageCount
+        val current = pagerState.currentPage
         Row(
             modifier = Modifier.padding(top = 16.dp),
             horizontalArrangement = Arrangement.Center,

@@ -36,7 +36,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import com.orion.support.MolecularComposeFragment;
+import com.orion.support.MolecularHomePage;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
@@ -80,7 +80,7 @@ public class Quicksettings extends SettingsPreferenceFragment implements OnPrefe
                 public void handleOnBackPressed() {
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.main_content, new MolecularComposeFragment())
+                            .replace(R.id.main_content, new MolecularHomePage())
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                             .commit();
                 }

@@ -20,10 +20,13 @@ import androidx.compose.ui.draw.clip
 import kotlin.math.absoluteValue
 import androidx.compose.foundation.ExperimentalFoundationApi
 import com.orion.support.compose.section.*
+import androidx.compose.foundation.shape.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.compose.ui.graphics.Color
 
+
+// TODO: Change Color Background & Text Styling
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MolecularCarousel() {
@@ -38,16 +41,21 @@ fun MolecularCarousel() {
     )
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(340.dp)
+        .padding(horizontal = 14.dp)
+        .clip(RoundedCornerShape(24.dp))
+        .background(MaterialTheme.colorScheme.tertiaryContainer),
+    horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 40.dp)
-                .height(320.dp),
-            contentPadding = PaddingValues(horizontal = 105.dp),
+                .padding(top = 15.dp)
+                .height(290.dp),
+            contentPadding = PaddingValues(horizontal = 125.dp),
             pageSpacing = 0.dp
         ) { page ->
             Card(
@@ -70,8 +78,9 @@ fun MolecularCarousel() {
                             fraction = 1f - pageOffset.coerceIn(0f, 1f)
                         )
                     }
-                    .width(200.dp)
-                    .padding(1.dp),
+                    .width(190.dp)
+                    .padding(1.dp)
+                    .height(250.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                 shape = MaterialTheme.shapes.large
             ) {
@@ -102,17 +111,19 @@ fun MolecularCarousel() {
 
         val current = pagerState.currentPage
         Row(
-            modifier = Modifier.padding(top = 16.dp),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+        Modifier
+            .clip(RoundedCornerShape(24.dp))
+            .background(MaterialTheme.colorScheme.onPrimary),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
         ) {
             repeat(pageCount) { index ->
                 val selected = index == current
                 Box(
                     modifier = Modifier
-                        .padding(4.dp)
-                        .height(8.dp)
-                        .width(if (selected) 22.dp else 8.dp)
+                        .padding(horizontal = 2.dp, vertical = 2.dp)
+                        .height(if (selected) 8.dp else 7.dp)
+                        .width(if (selected) 25.dp else 24.dp)
                         .clip(CircleShape)
                         .background(
                             if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(

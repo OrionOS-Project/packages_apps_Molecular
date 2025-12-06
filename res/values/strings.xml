@@ -7,10 +7,12 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- App name --> 
+    <string name="orionos_title">OrionOS</string>
     <string name="molecular_title">Molecular</string>
     <string name="molecular_summary">Can you find the molecule here?</string>
 
-    <!-- Home page -->
+    <!-- Molecular Home page -->
+    <string name="greetings">Hello %1$s</string>
     <string name="monet_settings">Monet settings</string>
     <string name="statusbar_title">Status bar</string>
     <string name="statusbar_summary">Tweak status bar elements</string>
@@ -26,6 +28,22 @@
     <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="misc_summary">Everything which doesn\’t fit elsewhere</string>
+    <string name="more_feature_category">More feature</string>
+    <string name="more_feature_category1">All here\'s</string>
+    <string name="accessibility_user_profile">User profile settings</string>
+    <string name="user_settings_unavailable">User settings unavailable</string>
+    
+    <!-- About -->
+    <string name="about_title">About OrionOS</string>
+    <string name="about_summary">Look here.</string>
+    <string name="about_orionos_project">It is an AOSP (Android Open Source Project) based project that is a continuation of LineageOS that prioritizes performance and minimalist design, provides sufficient feature requirements for long-term use and creates a healthy community environment.</string>
+    <string name="orionos_team_member_title"><u>OrionOS Project Team Members</u></string>
+    <string name="orionos_founder_title">Founder</string>
+    <string name="orionos_cofounder_title">Co-Founder</string>
+    <string name="orionos_core_dev_title">Core\nDeveloper</string>
+    <string name="orionos_uiux_title">UI/UX\nDesigner</string>
+    <string name="orionos_supported_project_title">Supported\nProject</string>
+    <string name="orionos_contributor_title">Contributor</string>
 
     <string name="dark_mode_summary_default">Enable system dark theme</string>
     <string name="dark_mode_summary_powersave">Power saver is enabled</string>
@@ -423,4 +441,16 @@ The progress bar dynamically switches between media and download states, ensurin
     <!-- chinese lunar calendar -->
     <string name="qs_show_lunar_calendar_title">Chinese Lunar Calendar</string>
     <string name="qs_show_lunar_calendar_summary">Show lunar calendar in Quick Settings</string>
+
+    <!-- Random Txt -->
+    <string name="evl_random_text1">"Here's are something you can do."</string>
+    <string name="evl_random_text2">Its features lickin good.</string>
+    <string name="evl_random_text3">No stopping or standing</string>
+    <string name="evl_random_text4">"Let's do it some assembly required."</string>
+    <string name="evl_random_text5">What are you looking for.</string>
+    <string name="evl_random_text6">Dream big and dare to fail.</string>
+    <string name="evl_random_text7">Warning: Insanely cool stuff ahead.</string>
+    <string name="evl_random_text8">We hope you enjoy being extended.</string>
+    <string name="evl_random_text9">Ask anything or explore personalized recommendations.</string>
+    <string name="evl_random_text10">Never eat anything bigger than your head.</string>
 </resources>

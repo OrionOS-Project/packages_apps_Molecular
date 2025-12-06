@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2025 OrionOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/about_us_section"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- About Card -->
+    <androidx.cardview.widget.CardView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/team_title"
+        android:id="@+id/about_card"
+        app:cardElevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_weight="3"
+                android:backgroundTint="@color/card_half_bottom_color"
+                android:elevation="0dp"
+                app:cardCornerRadius="20dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Background Image -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:tint="@android:color/white"
+                        android:alpha="0.2"
+                        android:scaleType="centerCrop"
+                        android:paddingStart="100dp"
+                        android:src="@drawable/ic_molecular"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <!-- Content -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_marginTop="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="30sp"
+                            android:textColor="?android:textColorPrimary"
+                            android:text="@string/orionos_title"/>
+                            
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:textColor="?android:textColorPrimary"
+                            android:text="@string/about_orionos_project"/>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Social Icons -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                android:layout_marginStart="15dp">
+                
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:background="@color/card_single_color"
+                    android:layout_height="match_parent">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/img_github"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/img_web"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:background="?android:colorBackground"
+                        app:cardElevation="0dp"
+                        app:cardCornerRadius="90dp">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:tint="?android:textColorPrimary"
+                            android:src="@drawable/ic_settings_github" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/img_web"
+                        app:layout_constraintTop_toBottomOf="@+id/img_github"
+                        app:layout_constraintBottom_toTopOf="@+id/img_tele"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:background="?android:colorBackground"
+                        app:cardElevation="0dp"
+                        app:cardCornerRadius="90dp">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:tint="?android:textColorPrimary"
+                            android:src="@drawable/ic_settings_website" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/img_tele"
+                        app:layout_constraintTop_toBottomOf="@+id/img_web"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:background="?android:colorBackground"
+                        app:cardElevation="0dp"
+                        app:cardCornerRadius="90dp">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:tint="?android:textColorPrimary"
+                            android:src="@drawable/ic_settings_telegram" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Team Members Section -->
+    <TextView
+        android:id="@+id/team_title"
+        app:layout_constraintTop_toBottomOf="@+id/about_card"
+        app:layout_constraintBottom_toTopOf="@+id/team_grid"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_card"
+        android:layout_marginTop="24dp"
+        android:text="@string/orionos_team_member_title"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="?android:textColorPrimary"/>
+
+    <!-- Team Members Grid -->
+    <GridLayout
+        android:id="@+id/team_grid"
+        app:layout_constraintTop_toBottomOf="@+id/team_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:padding="16dp">
+
+        <!-- Founder -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/click_founder"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@color/card_single_color">
+                <androidx.cardview.widget.CardView
+                    android:layout_gravity="center"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="40dp"
+                    app:cardElevation="0dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/founder_avatar"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+            
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/orionos_founder_title"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="?android:textColorPrimary"/>
+        </LinearLayout>
+
+        <!-- Co-Founder -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/click_co_founder"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@color/card_single_color">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_gravity="center"
+                    app:cardElevation="0dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/cofounder_avatar"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/orionos_cofounder_title"
+                android:textColor="?android:textColorPrimary"/>
+        </LinearLayout>
+
+        <!-- Core Dev -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            
+            <androidx.cardview.widget.CardView
+                android:id="@+id/click_core_dev"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@color/card_single_color">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_gravity="center"
+                    app:cardElevation="0dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/core_developer_avatar"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/orionos_core_dev_title"
+                android:textColor="?android:textColorPrimary"/>
+        </LinearLayout>
+
+        <!-- UI/UX Designer -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/click_ui_ux"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@color/card_single_color">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="40dp"
+                    app:cardElevation="0dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/uiux_designer_avatar"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:text="@string/orionos_uiux_title"
+                android:gravity="center"
+                android:textColor="?android:textColorPrimary"/>
+        </LinearLayout>
+
+        <!-- Supported Project -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/click_supp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@color/card_single_color">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_gravity="center"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/supported_project_avatar"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:text="@string/orionos_supported_project_title"
+                android:gravity="center"
+                android:textColor="?android:textColorPrimary"/>
+        </LinearLayout>
+
+        <!-- Contributor -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/click_cont"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                android:backgroundTint="@color/card_single_color">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_gravity="center"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/contributor_avatar"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="@string/orionos_contributor_title"
+                android:textColor="?android:textColorPrimary"/>
+        </LinearLayout>
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

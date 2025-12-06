@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2025 OrionOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="8.0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16.0dp"
+        android:layout_marginBottom="5.0dp"
+        android:paddingHorizontal="10.0dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0">
+            <TextView
+                android:id="@+id/greetings_text"
+                android:textSize="20.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greetings" />
+            <com.orion.support.widget.OrionRandomText
+                android:textSize="14.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                orion_runnable="true" />
+        </LinearLayout>
+        <!-- Avatar Profile -->
+        <androidx.preference.internal.PreferenceImageView
+            android:id="@+id/avatar_profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/molecular_orion_logo"
+            android:layout_marginStart="10dp"
+            app:maxHeight="52dp"
+            app:maxWidth="52dp" />
+    </LinearLayout>
+    
+    <!-- StatusBar -->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12.0dp"
+        android:layout_marginBottom="12.0dp"
+        android:weightSum="2.0">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/molecular_statusbar"
+            android:background="@drawable/molecular_homepage_bg_sb"
+            android:padding="18.0dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_marginEnd="6.0dp"
+            android:clipToOutline="true">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <androidx.preference.internal.PreferenceImageView
+                    android:layout_width="42.0dp"
+                    android:layout_height="42.0dp"
+                    android:src="@drawable/molecular_statusbar"
+                    app:maxHeight="52.0dp"
+                    app:maxWidth="52.0dp" />
+                <View
+                    android:layout_width="0.0dp"
+                    android:layout_height="1.0dp"
+                    android:layout_weight="1.0" />
+                <androidx.preference.internal.PreferenceImageView
+                    android:layout_gravity="center"
+                    android:layout_width="18.0dp"
+                    android:layout_height="18.0dp"
+                    android:src="@drawable/molecular_arrow_right"
+                    android:tint="?android:colorAccent" />
+            </LinearLayout>
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_statusbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.0dp"
+                android:text="@string/statusbar_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorPrimary"
+                android:id="@+id/molecular_statusbar_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/statusbar_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_statusbar_title"
+                android:alpha="1.0"
+                android:textAlignment="viewStart"
+                android:layout_alignStart="@+id/molecular_statusbar_title" />
+        </LinearLayout>
+
+        <!-- Quick Settings -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/molecular_quicksettings"
+            android:background="@drawable/molecular_homepage_bg_qs"
+            android:padding="18.0dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_marginStart="6.0dp"
+            android:clipToOutline="true">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <androidx.preference.internal.PreferenceImageView
+                    android:layout_width="42.0dp"
+                    android:layout_height="42.0dp"
+                    android:src="@drawable/molecular_quicksettings"
+                    app:maxHeight="52.0dp"
+                    app:maxWidth="52.0dp" />
+                <View
+                    android:layout_width="0.0dp"
+                    android:layout_height="1.0dp"
+                    android:layout_weight="1.0" />
+                <androidx.preference.internal.PreferenceImageView
+                    android:layout_gravity="center"
+                    android:layout_width="18.0dp"
+                    android:layout_height="18.0dp"
+                    android:src="@drawable/molecular_arrow_right"
+                    android:tint="?android:colorAccent" />
+            </LinearLayout>
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_quicksettings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.0dp"
+                android:text="@string/qs_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorPrimary"
+                android:id="@+id/molecular_quicksettings_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/qs_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_quicksettings_title"
+                android:alpha="1.0"
+                android:textAlignment="viewStart"
+                android:layout_alignStart="@+id/molecular_quicksettings_title" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Misc -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/molecular_misc"
+        android:background="@drawable/molecular_homepage_bg_misc"
+        android:padding="18.0dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10.0dp"
+        android:clipToOutline="true">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <androidx.preference.internal.PreferenceImageView
+                android:layout_width="42.0dp"
+                android:layout_height="42.0dp"
+                android:src="@drawable/molecular_misc"
+                app:maxHeight="52.0dp"
+                app:maxWidth="52.0dp" />
+            <View
+                android:layout_width="0.0dp"
+                android:layout_height="1.0dp"
+                android:layout_weight="1.0" />
+            <androidx.preference.internal.PreferenceImageView
+                android:layout_gravity="center"
+                android:layout_width="18.0dp"
+                android:layout_height="18.0dp"
+                android:src="@drawable/molecular_arrow_right"
+                android:tint="?android:colorAccent" />
+        </LinearLayout>
+        <TextView
+            android:textSize="16.0sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorPrimary"
+            android:ellipsize="marquee"
+            android:id="@+id/molecular_misc_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.0dp"
+            android:text="@string/misc_title"
+            android:singleLine="true"/>
+        <TextView
+            android:textSize="13.0sp"
+            android:textColor="?android:textColorPrimary"
+            android:id="@+id/molecular_misc_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.0dp"
+            android:text="@string/misc_summary"
+            android:maxLines="4"
+            android:layout_below="@+id/molecular_misc_title"
+            android:alpha="1.0"
+            android:textAlignment="viewStart"
+            android:layout_alignStart="@+id/molecular_misc_title" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16.0dp"
+        android:layout_marginBottom="5.0dp"
+        android:paddingHorizontal="10.0dp">
+        <TextView
+            android:textSize="14.0sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorSecondary"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/more_feature_category"
+            android:layout_weight="1.0"
+            android:alpha="0.7" />
+        <TextView
+            android:textSize="14.0sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorSecondary"
+            android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/more_feature_category1"
+            android:alpha="0.7"
+            android:layout_marginStart="8.0dp" />
+    </LinearLayout>
+
+    <!-- Monet Settings -->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/molecular_monet"
+        android:background="@drawable/molecular_homepage_bg"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dp"
+        android:paddingHorizontal="10.0dp"
+        android:clipToOutline="true">
+        <androidx.preference.internal.PreferenceImageView
+            android:layout_width="48.0dp"
+            android:layout_height="48.0dp"
+            android:src="@drawable/molecular_monet"
+            android:scaleType="center"
+            android:layout_marginEnd="5.0dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingVertical="10.0dp">
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_monet_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monet_settings_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/molecular_monet_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/monet_settings_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_monet"
+                android:alpha="1.0" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="18.0dp"
+            android:layout_height="18.0dp"
+            android:src="@drawable/molecular_arrow_right"
+            android:tint="?android:colorAccent"
+            android:layout_marginStart="5.0dp"
+            android:layout_marginEnd="5.0dp" />
+    </LinearLayout>
+
+    <!-- Button -->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/molecular_button"
+        android:background="@drawable/molecular_homepage_bg"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dp"
+        android:paddingHorizontal="10.0dp"
+        android:clipToOutline="true">
+        <androidx.preference.internal.PreferenceImageView
+            android:layout_width="48.0dp"
+            android:layout_height="48.0dp"
+            android:src="@drawable/molecular_button"
+            android:scaleType="center"
+            android:layout_marginEnd="5.0dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingVertical="10.0dp">
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_button_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buttons_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/molecular_button_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/buttons_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_button"
+                android:alpha="1.0" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="18.0dp"
+            android:layout_height="18.0dp"
+            android:src="@drawable/molecular_arrow_right"
+            android:tint="?android:colorAccent"
+            android:layout_marginStart="5.0dp"
+            android:layout_marginEnd="5.0dp" />
+    </LinearLayout>
+
+    <!-- LockScreen -->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/molecular_lockscreen"
+        android:background="@drawable/molecular_homepage_bg"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dp"
+        android:paddingHorizontal="10.0dp"
+        android:clipToOutline="true">
+        <androidx.preference.internal.PreferenceImageView
+            android:layout_width="48.0dp"
+            android:layout_height="48.0dp"
+            android:src="@drawable/molecular_lock"
+            android:scaleType="center"
+            android:layout_marginEnd="5.0dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingVertical="10.0dp">
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_lockscreen_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lockscreen_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/molecular_lockscreen_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/lockscreen_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_lockscreen_title"
+                android:alpha="1.0" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="18.0dp"
+            android:layout_height="18.0dp"
+            android:src="@drawable/molecular_arrow_right"
+            android:tint="?android:colorAccent"
+            android:layout_marginStart="5.0dp"
+            android:layout_marginEnd="5.0dp" />
+    </LinearLayout>
+
+    <!-- Spoofing -->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/molecular_spoof"
+        android:background="@drawable/molecular_homepage_bg"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dp"
+        android:paddingHorizontal="10.0dp"
+        android:clipToOutline="true">
+        <androidx.preference.internal.PreferenceImageView
+            android:layout_width="48.0dp"
+            android:layout_height="48.0dp"
+            android:src="@drawable/molecular_spoof"
+            android:scaleType="center"
+            android:layout_marginEnd="5.0dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingVertical="10.0dp">
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_spoof_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/spoofing_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:id="@+id/molecular_spoof_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/spoofing_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_spoof_title"
+                android:alpha="1.0" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="18.0dp"
+            android:layout_height="18.0dp"
+            android:src="@drawable/molecular_arrow_right"
+            android:tint="?android:colorAccent"
+            android:layout_marginStart="5.0dp"
+            android:layout_marginEnd="5.0dp" />
+    </LinearLayout>
+
+    <!-- About -->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:id="@+id/molecular_about"
+        android:background="@drawable/molecular_homepage_bg"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.0dp"
+        android:paddingHorizontal="10.0dp"
+        android:clipToOutline="true">
+        <androidx.preference.internal.PreferenceImageView
+            android:layout_width="48.0dp"
+            android:layout_height="48.0dp"
+            android:src="@drawable/molecular_about"
+            android:scaleType="center"
+            android:layout_marginEnd="5.0dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:paddingVertical="10.0dp">
+            <TextView
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
+                android:ellipsize="marquee"
+                android:id="@+id/molecular_about_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_title"
+                android:singleLine="true" />
+            <TextView
+                android:textSize="13.0sp"
+                android:textColor="?android:textColorSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4.0dp"
+                android:text="@string/about_summary"
+                android:maxLines="4"
+                android:layout_below="@+id/molecular_about_title"
+                android:alpha="1.0" />
+        </LinearLayout>
+        <androidx.preference.internal.PreferenceImageView
+            android:layout_width="18.0dp"
+            android:layout_height="18.0dp"
+            android:src="@drawable/molecular_arrow_right"
+            android:tint="?android:colorAccent"
+            android:layout_marginStart="5.0dp"
+            android:layout_marginEnd="5.0dp" />
+    </LinearLayout>
+</LinearLayout>

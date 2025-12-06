@@ -276,4 +276,17 @@
         <item>chase</item>
         <item>comet</item>
     </string-array>
+
+    <string-array name="evl_random_text">
+        <item>@string/evl_random_text1</item>
+        <item>@string/evl_random_text2</item>
+        <item>@string/evl_random_text3</item>
+        <item>@string/evl_random_text4</item>
+        <item>@string/evl_random_text5</item>
+        <item>@string/evl_random_text6</item>
+        <item>@string/evl_random_text7</item>
+        <item>@string/evl_random_text8</item>
+        <item>@string/evl_random_text9</item>
+        <item>@string/evl_random_text10</item>
+    </string-array>
 </resources>

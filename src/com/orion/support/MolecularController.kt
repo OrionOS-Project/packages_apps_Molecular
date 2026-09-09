@@ -41,7 +41,8 @@ class MolecularController(
         layout.findViewById<View>(viewId)?.setOnClickListener {
             mContext.startActivity(
                 Intent().apply {
-                    component = ComponentName(SETTINGS_PACKAGE, activity)
+                    val fullClassName = if (activity.startsWith(SETTINGS_PACKAGE)) activity else "$SETTINGS_PACKAGE.$activity"
+                    component = ComponentName(SETTINGS_PACKAGE, fullClassName)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
             )
